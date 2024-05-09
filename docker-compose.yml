@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  service-db:
+    image: postgres:15-alpine3.19
+    env_file:
+      - /docker/sso/sso-db.env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U username -d summer" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "5432:5432"
+    networks:
+      - apis_net
+    volumes:
+      - ./docker/sso/db-scripts:/docker-entrypoint-initdb.d/
+      - sso-data:/var/lib/postgresql/data
+    restart: unless-stopped
+#  backend:
+#    image: backend:0.0.1
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - service-db
+#    networks:
+#      - apis_net
+#    env_file:
+#      - back.env
+
+volumes:
+  sso-data:
+
+networks:
+  apis_net:
+    driver: bridge
