@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  service-db:
+  sso-db:
     image: postgres:15-alpine3.19
     env_file:
       - /docker/sso/sso-db.env
@@ -18,19 +18,19 @@ services:
       - ./docker/sso/db-scripts:/docker-entrypoint-initdb.d/
       - sso-data:/var/lib/postgresql/data
     restart: unless-stopped
-#  backend:
-#    image: backend:0.0.1
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - service-db
-#    networks:
-#      - apis_net
-#    env_file:
-#      - back.env
+  sso-server:
+    image: sso-server:0.0.1
+    build:
+      context: ./simple-sso
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sso-db
+    networks:
+      - apis_net
+    env_file:
+      - /docker/sso/sso-server.env
 
 volumes:
   sso-data:

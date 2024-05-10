@@ -25,8 +25,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
         var user_dao = repo.findById(login);
-        System.out.println(login);
-        System.out.println(user_dao.get());
         if(user_dao.isEmpty())
             throw new UsernameNotFoundException("user not found");
         return new User(user_dao.get().getLogin(), user_dao.get().getPassword(), repo.findUserRoles(login));
