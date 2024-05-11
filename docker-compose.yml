@@ -3,7 +3,7 @@ services:
   sso-db:
     image: postgres:15-alpine3.19
     env_file:
-      - /docker/sso/sso-db.env
+      - ./docker/sso/sso-db.env
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U username -d summer" ]
       interval: 10s
@@ -31,12 +31,12 @@ services:
       - apis_net
       - sso_net
     env_file:
-      - /docker/sso/sso-server.env
+      - ./docker/sso/sso-server.env
 
   users-db:
     image: postgres:15-alpine3.19
     env_file:
-      - /docker/users/users-db.env
+      - ./docker/users/users-db.env
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U username -d summer" ]
       interval: 10s
