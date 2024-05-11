@@ -13,7 +13,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - apis_net
+      - sso_net
     volumes:
       - ./docker/sso/db-scripts:/docker-entrypoint-initdb.d/
       - sso-data:/var/lib/postgresql/data
@@ -29,12 +29,37 @@ services:
       - sso-db
     networks:
       - apis_net
+      - sso_net
     env_file:
       - /docker/sso/sso-server.env
 
+  users-db:
+    image: postgres:15-alpine3.19
+    env_file:
+      - /docker/users/users-db.env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U username -d summer" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "5433:5432"
+    networks:
+      - users_net
+    volumes:
+     # - ./docker/sso/db-scripts:/docker-entrypoint-initdb.d/
+      - users-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
 volumes:
   sso-data:
+  users-data:
 
 networks:
   apis_net:
+    driver: bridge
+  sso_net:
+    driver: bridge
+  users_net:
     driver: bridge
