@@ -24,7 +24,7 @@ services:
       context: ./simple-sso
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8079:8080"
     depends_on:
       - sso-db
     networks:
@@ -51,6 +51,17 @@ services:
       - ./docker/users/db-scripts:/docker-entrypoint-initdb.d/
       - users-data:/var/lib/postgresql/data
     restart: unless-stopped
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
+      - "80:80"
+    networks:
+      - apis_net
+    volumes:
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+
 
 volumes:
   sso-data:
