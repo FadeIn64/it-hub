@@ -48,7 +48,7 @@ services:
     networks:
       - users_net
     volumes:
-     # - ./docker/sso/db-scripts:/docker-entrypoint-initdb.d/
+      - ./docker/users/db-scripts:/docker-entrypoint-initdb.d/
       - users-data:/var/lib/postgresql/data
     restart: unless-stopped
 
