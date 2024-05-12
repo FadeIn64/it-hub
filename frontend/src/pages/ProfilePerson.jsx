@@ -2,7 +2,6 @@ import {observer} from 'mobx-react-lite'
 import Background from '../components/Background'
 import Sidebar from '../components/Sidebar'
 import ava from '../assets/imgs/ava.png'
-import profile from '../utils/stores/profile.ts'
 import git from '../assets/imgs/git.png'
 import tg from '../assets/imgs/tg.png'
 import email from '../assets/imgs/email.png'
@@ -12,45 +11,47 @@ import plus from '../assets/imgs/plus.svg'
 import plus2 from '../assets/imgs/plus2.svg'
 import s from '../assets/imgs/search.svg'
 import DemoMeArticle from '../components/DemoMeArticle.jsx'
+import profilePerson from '../utils/stores/profilePerson.ts'
+import axios from 'axios'
 
-const Profile =observer(()=>{
+const ProfilePerson =observer(()=>{
     useEffect(()=>{
-        profile.setAvatar(ava);
-        profile.setName('Максим')
-        profile.setSername('Марцинкевич')
-        profile.setTextAboutMe(' Амбициозный студент СГТУ по направлению информационные технологии. Углубленно изучаю программирование, базы данных, сети и искусственный интеллект. Сильные стороны: • Глубокое понимание ИТ-принципов • Прочные навыки программирования • Отличные аналитические и коммуникативные навыки • Знакомство с искусственным интеллектом и машинным обучением')
-        profile.setArticles([
+        
+        profilePerson.setAvatar(ava);
+        profilePerson.setName('Максим')
+        profilePerson.setSername('Марцинкевич')
+        profilePerson.setTextAboutMe(' Амбициозный студент СГТУ по направлению информационные технологии. Углубленно изучаю программирование, базы данных, сети и искусственный интеллект. Сильные стороны: • Глубокое понимание ИТ-принципов • Прочные навыки программирования • Отличные аналитические и коммуникативные навыки • Знакомство с искусственным интеллектом и машинным обучением')
+        profilePerson.setArticles([
             {title: 'Привет! Меня зовут Илья, и я студент ИнПИТ',
             img: 'https://avatars.dzeninfra.ru/get-zen-vh/6269254/2a00000181758c3b585bb3b81dccc29c4b6a/orig',
             text: 'Привет! Меня зовут Илья, и я студент ИнПИТ. Я увлечен технологиями и информатикой. Мне интересно создавать программное обеспечение, веб-сайты, анализировать данные и заниматься кибербезопасностью. У меня есть навыки программирования на различных языках, таких как Java, Python, C++ и других. Я также изучаю современные технологии облачных вычислений, машинного обучения и искусственного интеллекта. В свободное время я часто участвую в хакатонах, конференциях и мастер-классах, чтобы расширить свои знания и навыки в области информационных технологий.'
             }
         ])
-        profile.setSkills(['1C','Java','Js','C++'])
+        profilePerson.setSkills(['1C','Java','Js','C++'])
     },[])
    
-    return <div className='profile'>
+    return <div className='profilePerson'>
         <Background></Background>
         <Sidebar></Sidebar>
         <div className="container">
             <div className="middle">
                 <div className="fio">
-                    <span>{profile.getName()!=undefined?profile.getName()+' ':' '}</span>
-                    <span>{profile.getSername()!=undefined?profile.getSername():''}</span>
+                    <span>{profilePerson.getName()!=undefined?profilePerson.getName()+' ':' '}</span>
+                    <span>{profilePerson.getSername()!=undefined?profilePerson.getSername():''}</span>
                 </div>
                 <div className="aboutme">
                     <h3>О себе</h3>
-                    <p>{profile.getTextAboutMe()!=undefined?profile.getTextAboutMe():''}</p>
+                    <p>{profilePerson.getTextAboutMe()!=undefined?profilePerson.getTextAboutMe():''}</p>
                 </div>
                 <div className="projects_block">
                     <span>Проекты</span>
                     <div className="icons">
                         <img src={s} alt="" />
-                        <img src={plus2} alt="" />
                     </div>
                 </div>
                 <div className="articles">
-                    {profile.getArticles().map(v=>{
-                        return <DemoMeArticle title={v.title} img={v.img} text={v.text}></DemoMeArticle>
+                    {profilePerson.getArticles().map(v=>{
+                        return <DemoMeArticle title={v.title} img={v.img} text={v.text.slice(0,300)+"..."}></DemoMeArticle>
                     })}
                 </div>
             </div>
@@ -59,40 +60,42 @@ const Profile =observer(()=>{
                     <div className="img">
                         <input type="file" onChange={(e)=>{
                             if(e.target.files[0]!=undefined){
-                                profile.setLoadImage(e.target.files[0]); 
-                                profile.setAvatar(URL.createObjectURL(e.target.files[0]))
+                                profilePerson.setLoadImage(e.target.files[0]); 
+                                profilePerson.setAvatar(URL.createObjectURL(e.target.files[0]))
                             }
                       }}/>
-                        <img src={profile.getAvatar()!=undefined?profile.getAvatar():''} alt="" />
+                        <img src={profilePerson.getAvatar()!=undefined?profilePerson.getAvatar():''} alt="" />
+                    </div>
+                    <div className="write">
+                        <span>Написать</span>
                     </div>
                 </div>
                 <div className="links">
                     <div className="link">
-                        <a href={profile.getGitLink()!=undefined&&profile.getGitLink()}>
+                        <a href={profilePerson.getGitLink()!=undefined&&profilePerson.getGitLink()}>
                             <img src={git} alt="" />
-                            <span>{profile.getGitLink()!=undefined&&profile.getGitLink()}</span>
+                            <span>{profilePerson.getGitLink()!=undefined&&profilePerson.getGitLink()}</span>
                         </a>
                     </div>
                     <div className="link">
-                        <a href={profile.getTgLink()!=undefined&&profile.getTgLink()}>
+                        <a href={profilePerson.getTgLink()!=undefined&&profilePerson.getTgLink()}>
                             <img src={tg} alt="" />
-                            <span>{profile.getTgLink()!=undefined&&profile.getTgLink()}</span>
+                            <span>{profilePerson.getTgLink()!=undefined&&profilePerson.getTgLink()}</span>
                         </a>
                     </div>
                     <div className="link">
-                        <a href={profile.getEmailLink()!=undefined&&profile.getEmailLink()}>
+                        <a href={profilePerson.getEmailLink()!=undefined&&profilePerson.getEmailLink()}>
                             <img src={email} alt="" />
-                            <span>{profile.getEmailLink()!=undefined&&profile.getEmailLink()}</span>
+                            <span>{profilePerson.getEmailLink()!=undefined&&profilePerson.getEmailLink()}</span>
                         </a>
                     </div>
                 </div>
                 <div className="skills">
                     <div className="s_top">
                       <span>Направления</span>
-                      <img src={plus} alt="" />
                     </div>
                     <div className="list">
-                        {profile.getSkills().map((v)=>{
+                        {profilePerson.getSkills().map((v)=>{
                             return <div className="skill">
                                 <span>{v}</span>
                             </div>
@@ -104,4 +107,4 @@ const Profile =observer(()=>{
     </div>
 })
 
-export default Profile
+export default ProfilePerson

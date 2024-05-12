@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class profileStore{
+class profilePersonStore{
     private _avatar: any;
     private _gitLink: string = 'https://git-scm.com/';
     private _tgLink: string = '@nickName';
@@ -102,4 +102,4 @@ class profileStore{
     
 }
 
-export default new profileStore()
+export default new profilePersonStore()

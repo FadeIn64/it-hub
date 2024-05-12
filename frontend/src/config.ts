@@ -1,3 +1,11 @@
 export const config ={
-    profile: '/profile'
+    profile:{
+        way: '/profile',
+        me: '/me',
+        person: '/:id'
+    },
+    posts:{
+        posts: '/lenta',
+        post: '/post'
+    }
 }

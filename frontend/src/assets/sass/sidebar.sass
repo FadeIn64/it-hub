@@ -1,30 +1,43 @@
-.sidebar
-    padding: 2.0625rem
-    background: #1E1E1E
-    border: 4px solid #1400FF
-    border-radius: 8px
-    width: max-content
-    margin-top: 10rem
-    height: 55.125rem
+.n
     position: relative
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    & ul
-        list-style: none
-        padding: 0
-        & li
+    height: max-content
+    width: 16rem
+    overflow: hidden
+    height: 100vh
+    & .sidebar_cont
+        position: absolute
+        overflow-y: scroll
+        &::-webkit-scrollbar 
+            display: none
+        & .sidebar
+            position: absolute
+            padding: 2.0625rem
+            background: #1E1E1E
+            border: 4px solid #1400FF
+            border-radius: 8px
+            width: max-content
+            top: 10rem
+            height: 55.125rem
+            position: relative
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            & ul
+                list-style: none
+                padding: 0
+                & li
+                    & span
+                        color: white
+                        font-weight: 500
+                        font-size: 1.5625rem
+                        line-height: 2.3438rem
+                        letter-spacing: -1.1%
+            & .menu>li:not(:first-child),
+            & .bottom>li:not(:first-child)
+                margin-top: .375rem
+            & .bottom
+                & img
+                    margin-top: .375rem
             & span
-                color: white
-                font-weight: 500
-                font-size: 1.5625rem
-                line-height: 2.3438rem
-                letter-spacing: -1.1%
-    & .menu>li:not(:first-child),
-    & .bottom>li:not(:first-child)
-        margin-top: .375rem
-    & .bottom
-        & img
-            margin-top: .375rem
-    & span
-        cursor: pointer
+                cursor: pointer
+            

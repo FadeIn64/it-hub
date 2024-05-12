@@ -1,13 +1,21 @@
-.profile
+.profile,
+.profilePerson
     display: flex
     padding: 0 3.9375rem
+    width: 100vw
     & .container
         display: flex
         flex-direction: row
         justify-content: space-between
         margin-left: 2.5rem
+        width: 80%
+        height: 100vh
         & .middle
-            margin-top: 5.1875rem
+            margin-top: 7.2rem
+            width: 80%
+            overflow-y: scroll
+            &::-webkit-scrollbar 
+                display: none
             & .fio
                 display: flex
                 justify-content: right
@@ -25,11 +33,37 @@
                     font-size: 1.5625rem
                     margin: 0
                 & p
-                    
-
+                    color: white
+                    font-weight: 500
+                    line-height: 150%
+            & .projects_block
+                border-radius: 8px
+                border: 4px solid #1400FF
+                background: #1E1E1E
+                padding: .5625rem 2.0625rem
+                display: flex
+                align-items: center
+                justify-content: space-between
+                margin-top: .9375rem
+                & span
+                    color: white 
+                    font-size: 1.5625rem
+                    font-weight: 500
+                & .icons
+                    display: flex
+                    align-items: center
+                    width: 3.5rem
+                    justify-content: space-between
+                    & img
+                        cursor: pointer
+            & .articles
+                width: 100%
         & .p_card
             margin-top: 3.875rem
             margin-left: 2.5rem
+            overflow-y: scroll
+            &::-webkit-scrollbar 
+                display: none
             & .avatar
                 padding: 1.6875rem 1.3125rem
                 background: #1E1E1E
@@ -37,6 +71,24 @@
                 border: 4px solid #1400FF
                 width: 16.875rem
                 height: 23rem
+                position: relative
+                & .write
+                    position: absolute
+                    width: max-content
+                    border-radius: 8px 
+                    border: 4px solid #1400FF
+                    background: #1E1E1E
+                    padding: .5625rem 1.1875rem
+                    height: max-content
+                    bottom: -1rem
+                    left: 50%
+                    z-index: 10
+                    transform: translate(-50%,0)
+                    cursor: pointer
+                    & span
+                        color: white
+                        font-weight: 500
+                        font-size: 1.5625rem
                 & .img
                     position: relative
                     height: 100%
@@ -57,6 +109,8 @@
                         top: 0
                         cursor: pointer
                         z-index: 5
+                
+
             & .links
                 padding: 2.5rem 1.0625rem
                 border-radius: 8px 
@@ -93,6 +147,21 @@
                         font-size: 1.5625rem
                     & img
                         cursor: pointer
+                & .list
+                    display: flex
+                    gap: 1.0625rem
+                    flex-wrap: wrap
+                    justify-content: center
+                    margin-top: 1.0625rem
+                    & .skill
+                        padding: .5625rem 1.1875rem
+                        border-radius: 8px
+                        border: 4px solid #1400FF
+                        background: #1E1E1E
+                        width: max-content
+                        & span  
+                            color: white
+                            font-weight: 500
 
 
     
