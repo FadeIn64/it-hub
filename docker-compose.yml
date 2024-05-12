@@ -91,6 +91,9 @@ services:
       - "8080:8080"
     networks:
       - apis_net
+    depends_on:
+      - competition-server
+      - sso-server
     volumes:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
