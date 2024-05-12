@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Method;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/sso")
