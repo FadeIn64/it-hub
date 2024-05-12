@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="simple-sso" />
         <module name="user-service" />
+        <module name="competition-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="competition-service" options="-parameters" />
       <module name="simple-sso" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>

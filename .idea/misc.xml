@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/simple-sso/pom.xml" />
         <option value="$PROJECT_DIR$/user-service/pom.xml" />
+        <option value="$PROJECT_DIR$/competition-service/pom.xml" />
       </list>
     </option>
   </component>
