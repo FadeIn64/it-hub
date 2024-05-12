@@ -50,6 +50,25 @@ services:
       - users-data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  competions-db:
+    image: postgres:15-alpine3.19
+    env_file:
+      - ./docker/competitions/competitions-db.env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U username -d summer" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "5434:5432"
+    networks:
+      - competitions_net
+    volumes:
+      - ./docker/competitions/db-scripts:/docker-entrypoint-initdb.d/
+      - competitions_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
   nginx:
     image: nginx:latest
     ports:
@@ -63,6 +82,7 @@ services:
 volumes:
   sso-data:
   users-data:
+  competitions_data:
 
 networks:
   apis_net:
@@ -70,4 +90,6 @@ networks:
   sso_net:
     driver: bridge
   users_net:
+    driver: bridge
+  competitions_net:
     driver: bridge
