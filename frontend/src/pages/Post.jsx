@@ -4,7 +4,6 @@ import Sidebar from "../components/Sidebar";
 import post from "../utils/stores/post.ts";
 import '../assets/css/post.css'
 const Post = observer(()=>{
-    console.log(post.getPost())
     let avatar;
     let name;
     let title;
@@ -37,14 +36,15 @@ const Post = observer(()=>{
                     <span>{name}</span>
                 </div>
                 <h2>{title}</h2>
-                <div className="text">
-                    <p>{text}</p>
-                </div>
                 <div className="img">
                     <a href={img} target="_black">
                         <img src={img} alt="" />
                     </a>
                 </div>
+                <div className="text">
+                    <p>{text}</p>
+                </div>
+               
             </div>
           
         </div>

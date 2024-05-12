@@ -1,4 +1,7 @@
 export const config ={
+    auth: {
+        auth: '/auth'
+    },
     profile:{
         way: '/profile',
         me: '/me',
@@ -6,6 +9,8 @@ export const config ={
     },
     posts:{
         posts: '/lenta',
-        post: '/post'
+        post: '/post',
+        challenges: '/challenges',
+        challenge: '/challenge'
     }
 }

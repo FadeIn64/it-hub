@@ -20,7 +20,7 @@ const Sidebar =observer(()=>{
                             Статьи
                         </span>
                     </li>
-                    <li>
+                    <li onClick={()=>{nav(config.posts.challenges)}}>
                         <span>
                             Конкурсы
                         </span>

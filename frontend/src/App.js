@@ -5,6 +5,9 @@ import './assets/css/default.css'
 import ProfilePerson from './pages/ProfilePerson.jsx'
 import Posts from './pages/Posts.jsx';
 import Post from './pages/Post.jsx';
+import Challenges from './pages/Challenges.jsx';
+import Challenge from './pages/Challenge.jsx';
+import Auth from './pages/Auth.jsx';
 function App() {
   return <>
   <BrowserRouter>
@@ -16,6 +19,12 @@ function App() {
       <Route path={config.posts.posts} element={<Posts></Posts>}>
       </Route>
       <Route path={config.posts.post} element={<Post></Post>}>
+      </Route>
+      <Route path={config.posts.challenges} element={<Challenges></Challenges>}>
+      </Route>
+      <Route path={config.posts.challenge} element={<Challenge></Challenge>}>
+      </Route>
+      <Route path={config.auth.auth} element={<Auth></Auth>}>
       </Route>
     </Routes>
   </BrowserRouter>
