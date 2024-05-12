@@ -1,4 +1,4 @@
-package com.lowgi.competitionservice;
+package com.lowfi.competitionservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

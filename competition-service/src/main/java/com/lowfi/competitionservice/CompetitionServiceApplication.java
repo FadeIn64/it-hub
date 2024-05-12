@@ -1,4 +1,4 @@
-package com.lowgi.competitionservice;
+package com.lowfi.competitionservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
