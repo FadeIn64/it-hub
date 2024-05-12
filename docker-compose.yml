@@ -50,7 +50,7 @@ services:
       - users-data:/var/lib/postgresql/data
     restart: unless-stopped
 
-  competions-db:
+  competitions-db:
     image: postgres:15-alpine3.19
     env_file:
       - ./docker/competitions/competitions-db.env
