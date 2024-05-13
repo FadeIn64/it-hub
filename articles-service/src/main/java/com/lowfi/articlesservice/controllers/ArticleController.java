@@ -1,7 +1,7 @@
 package com.lowfi.articlesservice.controllers;
 
-import com.lowfi.competitionservice.models.Competition;
-import com.lowfi.competitionservice.services.CompetitionService;
+import com.lowfi.articlesservice.models.Article;
+import com.lowfi.articlesservice.services.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/competition")
+@RequestMapping("api/articles")
 @AllArgsConstructor
-public class CompetitionController {
-    CompetitionService competitionService;
+public class ArticleController {
+    ArticleService articleService;
     @GetMapping("/{id}")
     ResponseEntity getById(@PathVariable int id){
-        Competition com = competitionService.findById(id);
+        Article com = articleService.findById(id);
         if (com == null)
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         return ResponseEntity.ok(com);
     }
     @GetMapping("/all")
     ResponseEntity getAll(){
-        return ResponseEntity.ok(competitionService.findAll());
+        return ResponseEntity.ok(articleService.findAll());
     }
 }

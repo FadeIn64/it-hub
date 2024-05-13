@@ -7,8 +7,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Data
-@Table("competitions_w_themes")
-public class Competition{
+@Table("articles_w_themes")
+public class Article{
     Integer id;
     String author;
     String header;
