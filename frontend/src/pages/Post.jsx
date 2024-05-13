@@ -3,7 +3,26 @@ import Background from "../components/Background";
 import Sidebar from "../components/Sidebar";
 import post from "../utils/stores/post.ts";
 import '../assets/css/post.css'
+import Footer from "../components/Footer.jsx";
+import Comments from "../components/Comments.jsx";
+import { Requests } from "../utils/axios/auth.ts";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { config } from "../config.ts";
 const Post = observer(()=>{
+    const [state, setState] = useState(false)
+    const nav = useNavigate()
+    useEffect(()=>{
+        if(document.cookie.length==0){
+            nav(config.auth.auth)
+        }else{
+            const o = new Requests()
+            const cookee= document.cookie.split('=')[1]
+            const data = JSON.parse(cookee)
+            const res = o.auth(data.login, data.password)
+            setState(res)
+        }
+    },[])
     let avatar;
     let name;
     let title;
@@ -23,8 +42,9 @@ const Post = observer(()=>{
         img = localStorage.getItem('img', img)
         text = localStorage.getItem('text', text)
     }
-
-    return <div className="post">
+    if(state)
+    return <>
+    <div className="post">
         <Background></Background>
         <Sidebar></Sidebar>
         <div className="post_cont">
@@ -46,8 +66,12 @@ const Post = observer(()=>{
                 </div>
                
             </div>
+            <Comments></Comments>
           
         </div>
     </div>
+    <Footer></Footer>
+    </>
+    return <></>
 })
 export default Post

@@ -4,24 +4,16 @@
   height: max-content;
   width: 16rem;
   overflow: hidden;
-  height: 100vh;
-}
-.n .sidebar_cont {
-  position: absolute;
-  overflow-y: scroll;
-}
-.n .sidebar_cont::-webkit-scrollbar {
-  display: none;
+  height: 100%;
 }
 .n .sidebar_cont .sidebar {
-  position: absolute;
   padding: 2.0625rem;
   background: #1E1E1E;
   border: 4px solid #1400FF;
   border-radius: 8px;
   width: -moz-max-content;
   width: max-content;
-  top: 10rem;
+  margin-top: 10rem;
   height: 55.125rem;
   position: relative;
   display: flex;
@@ -47,4 +39,4 @@
 }
 .n .sidebar_cont .sidebar span {
   cursor: pointer;
-}
+}/*# sourceMappingURL=sidebar.css.map */

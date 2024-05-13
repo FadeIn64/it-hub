@@ -5,14 +5,16 @@ export class Requests{
     async auth(login: string, pass: string){
         const base = Base64.encode(login+":"+pass)
         try {
-
             const res =  await axios.get(api.host+api.auth, {auth:{
-                username: 'admin',
-                password: 'admin'
+                username: login,
+                password: pass
             }})
-            console.log(res)
+            if(document.cookie.split('=')[0]!='auth'){
+                document.cookie='auth='+JSON.stringify(res.data)
+            }
+            return true
         } catch (error) {
-            console.log(error)
+            return false
         }
      
     }

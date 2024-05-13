@@ -9,6 +9,7 @@ import Challenges from './pages/Challenges.jsx';
 import Challenge from './pages/Challenge.jsx';
 import Auth from './pages/Auth.jsx';
 function App() {
+  window.alert = console.log
   return <>
   <BrowserRouter>
     <Routes>

@@ -7,14 +7,30 @@ import git from '../assets/imgs/git.png'
 import tg from '../assets/imgs/tg.png'
 import email from '../assets/imgs/email.png'
 import '../assets/css/profile.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import plus from '../assets/imgs/plus.svg'
 import plus2 from '../assets/imgs/plus2.svg'
 import s from '../assets/imgs/search.svg'
 import DemoMeArticle from '../components/DemoMeArticle.jsx'
+import Footer from '../components/Footer.jsx'
+import { Requests } from '../utils/axios/auth.ts'
+import { config } from '../config.ts'
+import { useNavigate } from 'react-router-dom'
 
 const Profile =observer(()=>{
+    const [state, setState] = useState(false)
+    const nav =useNavigate()
     useEffect(()=>{
+        const o = new Requests()
+        if(document.cookie.length==0){
+            nav(config.auth.auth)
+        }else{
+            const cookee= document.cookie.split('=')[1]
+            const data = JSON.parse(cookee)
+            const res = o.auth(data.login, data.password)
+            setState(res)
+        }
+       
         profile.setAvatar(ava);
         profile.setName('Максим')
         profile.setSername('Марцинкевич')
@@ -27,8 +43,9 @@ const Profile =observer(()=>{
         ])
         profile.setSkills(['1C','Java','Js','C++'])
     },[])
-   
-    return <div className='profile'>
+    if(state)
+    return <>
+    <div className='profile'>
         <Background></Background>
         <Sidebar></Sidebar>
         <div className="container">
@@ -101,7 +118,11 @@ const Profile =observer(()=>{
                 </div>
             </div>
         </div>
+      
     </div>
+    <Footer></Footer>
+    </>
+    return <></>
 })
 
 export default Profile
