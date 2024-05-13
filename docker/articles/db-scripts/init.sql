@@ -48,7 +48,7 @@ create table pretender
         primary key (competition, login)
 );
 
-alter table pretender
+alter table article_comment
     owner to lowfi;
 
 create view articles_w_theme(id, author, header, header_img, description, link, pub_date, theme) as

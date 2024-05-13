@@ -8,11 +8,11 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.lowgi</groupId>
-    <artifactId>competition-service</artifactId>
+    <groupId>com.lowfi</groupId>
+    <artifactId>articles-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>competition-service</name>
-    <description>competition-service</description>
+    <name>articles-service</name>
+    <description>articles-service</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -49,10 +49,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-relational</artifactId>
         </dependency>
     </dependencies>
 

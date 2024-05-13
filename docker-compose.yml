@@ -51,6 +51,19 @@ services:
       - users-data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  users-service:
+    image: users-service:0.0.1
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    depends_on:
+      - users-db
+    networks:
+      - apis_net
+      - users_net
+    env_file:
+      - ./docker/users/users-service.env
+
   competitions-db:
     image: postgres:15-alpine3.19
     env_file:
@@ -113,6 +126,7 @@ services:
     depends_on:
       - competition-server
       - sso-server
+      - users-service
     volumes:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
