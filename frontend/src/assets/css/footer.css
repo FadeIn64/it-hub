@@ -35,6 +35,7 @@ footer .footer .m .col1 span, footer .footer .m .col2 span, footer .footer .m .c
   font-weight: 500;
   color: white;
   margin-top: 1rem;
+  cursor: pointer;
   line-height: 150%;
 }
 footer .ff {
@@ -48,4 +49,4 @@ footer .ff span {
   color: white;
   border-bottom: 1px solid white;
   cursor: pointer;
-}/*# sourceMappingURL=footer.css.map */
+}

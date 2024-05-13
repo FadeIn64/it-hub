@@ -1,4 +1,4 @@
-.comments {
+.players {
   display: flex;
   flex-direction: column;
   padding: 2.25rem;
@@ -10,98 +10,73 @@
   margin-left: 1rem;
   justify-content: center;
 }
-.comments h3 {
+.players h3 {
   font-weight: 500;
   color: white;
   font-size: 2.375rem;
 }
-.comments .cs {
+.players .ps {
   display: flex;
   flex-direction: column;
   margin-left: 5.8125rem;
 }
-.comments .cs .comment {
+.players .ps .player {
   display: flex;
   flex-direction: column;
   margin-top: 3.75rem;
+  width: 50%;
 }
-.comments .cs .comment .info {
+.players .ps .player .info {
   display: flex;
   align-items: center;
 }
-.comments .cs .comment .info .img {
+.players .ps .player .info .img {
   width: 4.4375rem;
   height: 4.4375rem;
   border-radius: 100%;
   position: relative;
   overflow: hidden;
 }
-.comments .cs .comment .info .img img {
+.players .ps .player .info .img img {
   position: absolute;
   top: 0;
   height: 100%;
   left: 50%;
   transform: translate(-50%, 0);
 }
-.comments .cs .comment .info .i {
+.players .ps .player .info .i {
   display: flex;
   flex-direction: column;
   margin-left: 1.0625rem;
 }
-.comments .cs .comment .info .i h4 {
+.players .ps .player .info .i h4 {
   margin: 0;
   font-size: 1.5625rem;
   line-height: 150%;
   font-weight: 500;
   color: white;
 }
-.comments .cs .comment .info .i span {
+.players .ps .player .info .i span {
   color: rgba(255, 255, 255, 0.6980392157);
   font-size: 1rem;
   font-weight: 100;
 }
-.comments .cs .comment .text {
+.players .ps .player .text {
   color: white;
   font-weight: 500;
   line-height: 150%;
 }
-.comments .form {
-  display: flex;
-  flex-direction: column;
-}
-.comments .form h4 {
-  font-weight: 500;
-  color: white;
-  font-size: 2.375rem;
-}
-.comments .form .r {
-  display: flex;
-  align-items: center;
-}
-.comments .form .r .input {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 0.75rem;
+.players .ps .player .btn {
+  padding: 0.5625rem 1.1875rem;
   border-radius: 8px;
   border: 4px solid #1400FF;
-  box-sizing: border-box;
+  width: -moz-max-content;
+  width: max-content;
+  margin-left: auto;
 }
-.comments .form .r .input textarea {
-  background: #1E1E1E;
-  height: 2rem;
-  outline: 0;
-  border: 0;
-  width: 100%;
+.players .ps .player .btn span {
   font-size: 1.5625rem;
-  height: 4rem;
-  box-sizing: border-box;
   color: white;
-}
-.comments .form .r .input img {
-  cursor: pointer;
-}
-.comments .form .r .send {
-  margin-left: 1.0625rem;
+  font-weight: 500;
   cursor: pointer;
 }

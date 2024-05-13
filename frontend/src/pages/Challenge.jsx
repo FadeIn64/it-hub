@@ -27,19 +27,25 @@ const Challenge=observer(()=>{
     let title;
     let img;
     let text;
+    let theme;
+    let date;
     if(challenges.getChallenge()!=undefined){
-         avatar= challenges.getChallenge().avatar
-         name= challenges.getChallenge().name
-         title= challenges.getChallenge().title
-         img= challenges.getChallenge().img
-         text= challenges.getChallenge().text
+        avatar= challenges.getChallenge().avatar
+        name= challenges.getChallenge().name
+        title= challenges.getChallenge().title
+        img= challenges.getChallenge().img
+        text= challenges.getChallenge().text
+        theme= challenges.getChallenge().theme
+        date= challenges.getChallenge().date
     }
     else{
-        avatar = localStorage.getItem('avatar',avatar)
-        name = localStorage.getItem('name',name)
-        title = localStorage.getItem('title', title)
-        img = localStorage.getItem('img', img)
-        text = localStorage.getItem('text', text)
+        avatar = localStorage.getItem('avatar')
+        name = localStorage.getItem('name')
+        title = localStorage.getItem('title')
+        img = localStorage.getItem('img')
+        text = localStorage.getItem('text')
+        theme = localStorage.getItem('theme').split(',')
+        date = localStorage.getItem('date')
     }
     if(state)
     return <>
@@ -48,29 +54,37 @@ const Challenge=observer(()=>{
         <Sidebar></Sidebar>
         <div className="chals_cont">
             <div className="challenge_p">
-                    <h2>Конкурс «{title}»</h2>
-                    <div className="meaners">
-                        <span className="y">Организаторы:</span>
-                        <div className="meaner">
-                            <div className="img">
-                                <img src={avatar} alt="" />
-                            </div>
-                            <span>{name}</span>
+                <div className="pre">
+                    <div className="date">
+                        <span>{new Date(date).getFullYear()}-{String(new Date(date).getMonth()).length==1?'0'+new Date(date).getMonth():new Date(date).getMonth()}-{new Date(date).getDate()} {new Date(date).getHours()}:{new Date(date).getMinutes()}</span>
+                    </div>
+                    <div className="themes">
+                        {theme.map(v=>{return  <span>{v}</span>})}
+                    </div>
+                </div>
+                <h2>Конкурс «{title}»</h2>
+                <div className="meaners">
+                    <span className="y">Организаторы:</span>
+                    <div className="meaner">
+                        <div className="img">
+                            <img src={avatar} alt="" />
                         </div>
+                        <span>{name}</span>
                     </div>
-                    <div className="text">
-                        <p>{text}</p>
-                    </div>
-                    <div className="imgg">
-                        <a href={img} target="_black">
-                            <img src={img} alt="" />
-                        </a>
-                    </div>
-            
-                    <div className="ye" onClick={()=>{
-                    }}>
-                        <span>Хочу участвовать</span>
-                    </div>
+                </div>
+                <div className="text">
+                    <p>{text}</p>
+                </div>
+                <div className="imgg">
+                    <a href={img} target="_black">
+                        <img src={img} alt="" />
+                    </a>
+                </div>
+        
+                <div className="ye" onClick={()=>{
+                }}>
+                    <span>Хочу участвовать</span>
+                </div>
             </div>
         </div>
         

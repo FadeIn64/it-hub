@@ -8,11 +8,19 @@ import Post from './pages/Post.jsx';
 import Challenges from './pages/Challenges.jsx';
 import Challenge from './pages/Challenge.jsx';
 import Auth from './pages/Auth.jsx';
+import Mean from './pages/Mean.jsx';
+import Chats from './pages/Chats.jsx';
 function App() {
   window.alert = console.log
   return <>
   <BrowserRouter>
     <Routes>
+
+      <Route path={config.auth.auth} element={<Auth></Auth>}>
+      </Route>
+
+
+
       <Route path={config.profile.way+config.profile.me} element={<Profile></Profile>}>
       </Route>
       <Route path={config.profile.way+config.profile.person} element={<ProfilePerson></ProfilePerson>}>
@@ -25,7 +33,9 @@ function App() {
       </Route>
       <Route path={config.posts.challenge} element={<Challenge></Challenge>}>
       </Route>
-      <Route path={config.auth.auth} element={<Auth></Auth>}>
+      <Route path={config.chats.chats} element={<Chats></Chats>}>
+      </Route>
+      <Route path={'/*'} element={<Mean></Mean>}>
       </Route>
     </Routes>
   </BrowserRouter>

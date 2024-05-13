@@ -32,7 +32,7 @@ const Comments =observer(()=>{
             <h4>Написать комметарий</h4>
             <div className="r">
                 <div className="input">
-                    <input type="text" />
+                    <textarea type="text" placeholder="Комментарий"/>
                     <img src={o} alt="" />
                 </div>
                 <div className="send">

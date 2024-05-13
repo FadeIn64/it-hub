@@ -2,13 +2,13 @@ import { observer } from "mobx-react-lite";
 import Background from "../components/Background";
 import Sidebar from "../components/Sidebar";
 import post from "../utils/stores/post.ts";
-import '../assets/css/post.css'
+import '../assets/css/post.css';
 import Footer from "../components/Footer.jsx";
-import Comments from "../components/Comments.jsx";
 import { Requests } from "../utils/axios/auth.ts";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { config } from "../config.ts";
+import Players from "../components/Players.jsx";
 const Post = observer(()=>{
     const [state, setState] = useState(false)
     const nav = useNavigate()
@@ -66,7 +66,7 @@ const Post = observer(()=>{
                 </div>
                
             </div>
-            <Comments></Comments>
+            <Players></Players>
           
         </div>
     </div>

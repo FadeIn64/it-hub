@@ -29,10 +29,11 @@
 }
 .background2 img {
   position: absolute;
+  background: #1E1E1E;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   top: 0;
   left: 0;
   right: 0;
-}/*# sourceMappingURL=background.css.map */
+}

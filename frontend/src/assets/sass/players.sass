@@ -1,4 +1,4 @@
-.comments
+.players
     display: flex
     flex-direction: column
     padding: 2.25rem
@@ -13,14 +13,15 @@
         font-weight: 500
         color: white
         font-size: 2.375rem
-    & .cs
+    & .ps
         display: flex
         flex-direction: column
         margin-left: 5.8125rem
-        & .comment
+        & .player
             display: flex
             flex-direction: column
             margin-top: 3.75rem
+            width: 50%
             & .info
                 display: flex
                 align-items: center
@@ -54,39 +55,16 @@
                 color: white
                 font-weight: 500
                 line-height: 150%
-    & .form
-        display: flex
-        flex-direction: column
-        & h4
-            font-weight: 500
-            color: white
-            font-size: 2.375rem
-        & .r
-            display: flex
-            align-items: center
-            & .input
-                display: flex
-                align-items: center
-                width: 100%
-                padding: .75rem
+            & .btn
+                padding: .5625rem 1.1875rem
                 border-radius: 8px
                 border: 4px solid #1400FF
-                box-sizing: border-box
-                & textarea
-                    background: #1E1E1E
-                    height: 2rem
-                    outline: 0
-                    border: 0
-                    width: 100%
+                width: max-content
+                margin-left: auto
+                & span
                     font-size: 1.5625rem
-                    height: 4rem
-                    box-sizing: border-box
                     color: white
-                & img
+                    font-weight: 500
                     cursor: pointer
-            & .send
-                margin-left: 1.0625rem
-                cursor: pointer
-
-
-    
+                
+   

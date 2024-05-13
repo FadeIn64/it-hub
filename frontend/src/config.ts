@@ -12,5 +12,8 @@ export const config ={
         post: '/post',
         challenges: '/challenges',
         challenge: '/challenge'
+    },
+    chats:{
+        chats: '/chats'
     }
 }

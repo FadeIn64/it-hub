@@ -23,6 +23,24 @@
   border: 4px solid #1400FF;
   border-radius: 8px;
 }
+.challenges .chals_cont .challenge_p .pre {
+  display: flex;
+  justify-content: space-between;
+}
+.challenges .chals_cont .challenge_p .pre .date span {
+  color: rgba(255, 255, 255, 0.6509803922);
+  font-size: 1rem;
+  font-weight: 100;
+}
+.challenges .chals_cont .challenge_p .pre .themes {
+  display: flex;
+}
+.challenges .chals_cont .challenge_p .pre .themes span {
+  margin-left: 1.0625rem;
+  color: rgba(255, 255, 255, 0.6509803922);
+  font-size: 1rem;
+  font-weight: 100;
+}
 .challenges .chals_cont .challenge_p .meaners {
   display: flex;
   align-items: center;
@@ -84,4 +102,4 @@
   margin-top: 1.5625rem;
   border: 4px solid #1400FF;
   cursor: pointer;
-}/*# sourceMappingURL=challenges.css.map */
+}

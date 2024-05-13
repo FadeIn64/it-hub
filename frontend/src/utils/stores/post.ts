@@ -6,8 +6,8 @@ class postStore{
     }
 
     private _post: any;
-    private _comments: any=[];
-    private _comment: any=[];
+    private _players: any=[];
+    private _player: any;
 
     getPost(){
         return this._post;
@@ -17,20 +17,20 @@ class postStore{
         this._post=post;
     }
 
-    getComments(){
-        return this._comments;
+    getPlayers(){
+        return this._players;
     }
 
-    setComments(comments: any){
-        this._comments=comments;
+    setPlayers(players: any){
+        this._players=players;
     }
 
-    getComment(){
-        return this._comment;
+    getPlayer(){
+        return this._player;
     }
 
-    setComment(comment: any){
-        this._comment=comment;
+    setPlayer(player: any){
+        this._player=player;
     }
 
 

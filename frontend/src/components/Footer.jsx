@@ -2,7 +2,10 @@ import { observer } from "mobx-react-lite";
 import '../assets/css/footer.css'
 import logo from '../assets/imgs/logo.svg'
 import sstu from '../assets/imgs/sstu.png'
+import { useNavigate } from "react-router-dom";
+import { config } from "../config.ts";
 const Footer = observer(()=>{
+    const nav = useNavigate()
     return <footer>
         <div className="footer">
             <div className="logo">
@@ -11,14 +14,14 @@ const Footer = observer(()=>{
             <div className="m">
                 <div className="col1">
                     <h4>Ваш аккаунт</h4>
-                    <span>Войти</span>
+                    <span onClick={()=>{nav(config.auth.auth)}}>Войти</span>
                     <span>Регистрация</span>
                 </div>
                 <div className="col2">
                     <h4>Разделы</h4>
-                    <span>Статьи</span>
-                    <span>Конкурсы</span>
-                    <span>Хакатоны</span>
+                    <span onClick={()=>{nav(config.posts.posts)}}>Статьи</span>
+                    <span onClick={()=>{nav(config.posts.challenges)}}>Конкурсы</span>
+                    <span onClick={()=>{nav(config.posts.challenges)}}>Хакатоны</span>
                 </div>
                 <div className="col3">
                     <h4>Информация</h4>

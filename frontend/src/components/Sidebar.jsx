@@ -25,7 +25,7 @@ const Sidebar =observer(()=>{
                             Конкурсы
                         </span>
                     </li>
-                    <li>
+                    <li onClick={()=>{nav(config.chats.chats)}}>
                         <span>
                             Чаты
                         </span>
@@ -44,7 +44,10 @@ const Sidebar =observer(()=>{
                         Редактировать
                     </span>
                 </li>
-                <li>
+                <li onClick={()=>{
+                        document.cookie='auth=""'
+                        nav('/')
+                    }}>
                     <span>
                         Выйти
                     </span>
