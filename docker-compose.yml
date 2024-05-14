@@ -178,6 +178,8 @@ services:
     volumes:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
+
+
   frontend:
     image: front:0.0.1
     build:
