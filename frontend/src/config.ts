@@ -18,7 +18,8 @@ export const config ={
     },
     qa:{
         qa: '/qa',
-        question: '/question'
+        question: '/question/:id',
+        question2: '/question'
     }
 
 }

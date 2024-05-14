@@ -8,7 +8,7 @@ import { Requests } from "../utils/axios/auth.ts";
 import articles from "../utils/axios/articels.jsx";
 
 
-const QA = observer(({date, header, text,themes,author})=>{
+const QA = observer(({data})=>{
     const [user, setUser]= useState(null)
     const nav = useNavigate()
     useEffect(()=>{
@@ -16,13 +16,13 @@ const QA = observer(({date, header, text,themes,author})=>{
             nav(config.auth.auth)
         }else{
             const cookee= document.cookie.split('=')[1]
-            const data = JSON.parse(cookee)
+            const dat = JSON.parse(cookee)
             const o = new Requests()
             const r = new articles()
-            const res = o.auth(data.login,data.password)
+            const res = o.auth(dat.login,dat.password)
             if(res){
                 const user= new usersUtil()
-                user.getUser(author).then(v=>{
+                user.getUser(data.author).then(v=>{
                     setUser(v)
                 })
             }
@@ -35,20 +35,15 @@ const QA = observer(({date, header, text,themes,author})=>{
     const [state, setState] = useState(false)
     if(state)
     return <div className="qa" onClick={()=>{
-        qa.setQA({date, header, text,themes,author})
-        localStorage.setItem('author',author)
-        localStorage.setItem('header', header)
-        localStorage.setItem('description', text)
-        localStorage.setItem('date', date)
-        localStorage.setItem('themes', themes.join(','))
-        nav(config.qa.question)
+        qa.setQA(data)
+        nav(config.qa.question2+'/'+data.id)
     }}>
         <div className="h">
             <div className="date">
-                <span>{new Date(date).getFullYear()}-{String(new Date(date).getMonth()).length==1?'0'+new Date(date).getMonth():new Date(date).getMonth()}-{new Date(date).getDate()} {new Date(date).getHours()}:{new Date(date).getMinutes()}</span>
+                <span>{new Date(data.pub_date).getFullYear()}-{String(new Date(data.pub_date).getMonth()).length==1?'0'+new Date(data.pub_date).getMonth():new Date(data.pub_date).getMonth()}-{new Date(data.pub_date).getDate()} {new Date(data.pub_date).getHours()}:{new Date(data.pub_date).getMinutes()}</span>
             </div>
             <div className="themes">
-                {themes.map(v=>{
+                {data.themes.map(v=>{
                     return <span>
                         {v}
                     </span>
@@ -56,10 +51,10 @@ const QA = observer(({date, header, text,themes,author})=>{
             </div>
         </div>
         <div className="header">
-            <h4>{header}</h4>
+            <h4>{data.header}</h4>
         </div>
         <div className="text">
-            <p>{text.slice(0,100)}...</p>
+            <p>{data.description.slice(0,100)}...</p>
         </div>
         <div className="author">
             <div className="img">

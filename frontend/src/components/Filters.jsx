@@ -1,8 +1,26 @@
 import { observer } from "mobx-react-lite";
-
-const Filters = observer(()=>{
+import search from '../assets/imgs/search.svg'
+import filters from "../utils/stores/filters.ts";
+import '../assets/css/filters.css'
+import qa from "../utils/stores/qa.ts";
+import filtersFunctions from "../utils/functions/filtersFunctions.ts";
+const Filters = observer(({mode})=>{
     return <div className="filters">
-        
+        <div className="search">
+            <input type="text" />
+            <img src={search} alt="" />
+        </div>
+        <div className="themes">
+            {filters.getThemes()!=undefined&&filters.getThemes().map(v=>{
+                return <span onClick={()=>{
+                    const f = new filtersFunctions()
+                    if(mode=='qa'){
+                        qa.setQAs(filters.getQA())
+                        qa.setQAs(f.filter({v},qa.getQA()))
+                    }
+                }}>{v}</span>
+            })}
+        </div>
     </div>
 })
 

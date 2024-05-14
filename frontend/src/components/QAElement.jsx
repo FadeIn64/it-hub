@@ -5,58 +5,48 @@ import { useEffect, useState } from "react";
 import usersUtil from "../utils/axios/users.ts";
 import { config } from "../config.ts";
 import { Requests } from "../utils/axios/auth.ts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import qa from "../utils/stores/qa.ts";
+import qaUtil from "../utils/axios/qa.ts";
 
 const QAElement=observer(()=>{
     const [user, setUser]= useState(null)
     const [state, setState] = useState(false)
     const nav = useNavigate()
+    const param=useParams()
     useEffect(()=>{
         if(document.cookie.length==0){
             nav(config.auth.auth)
         }else{
-            let author;
-            if(qa.getQA!=undefined){
-                author= qa.getQA().author
-            }
-            else{
-                author = localStorage.getItem('author')
-            }
             const cookee= document.cookie.split('=')[1]
             const data = JSON.parse(cookee)
             const o = new Requests()
             const res = o.auth(data.login,data.password)
             if(res){
-                const user= new usersUtil()
-                user.getUser(author).then(v=>{
-                    setUser(v)
-                })
+                let author;
+                if(qa.getQA()==undefined){
+                    const q= new qaUtil()
+                    q.getQA(param.id).then(v=>{
+                        author= qa.getQA().author
+                        const user= new usersUtil()
+                        user.getUser(author).then(v=>{
+                            setUser(v)
+                        })
+                    })
+                }
+                else{
+                    author= qa.getQA().author
+                    const user= new usersUtil()
+                    user.getUser(author).then(v=>{
+                        setUser(v)
+                    })
+                }
             }
 
             setState(res)
         }
     },[])
 
-    let author;
-    let header
-    let text;
-    let date;
-    let themes;
-    if(qa.getQA!=undefined){
-         author= qa.getQA().author
-         header= qa.getQA().header
-         text= qa.getQA().text
-         date= qa.getQA().date
-         themes = qa.getQA().themes
-    }
-    else{
-        author = localStorage.getItem('author')
-        header = localStorage.gettItem('header')
-        text = localStorage.setItem('description', text)
-        date = localStorage.setItem('date', date)
-        themes = localStorage.setItem('themes', themes.join(','))
-    }
     if(state)
     return <div className="qaelement">
         <Background></Background>
@@ -72,14 +62,25 @@ const QAElement=observer(()=>{
                             <span>{user&&user.surname} {user&&user.name}</span>
                         </div>
                         <div className="date">
-                            <span>{new Date(date).getFullYear()}-{String(new Date(date).getMonth()).length==1?'0'+new Date(date).getMonth():new Date(date).getMonth()}-{new Date(date).getDate()} {new Date(date).getHours()}:{new Date(date).getMinutes()}</span>
+                            <span>{new Date(qa.getQA()!=undefined&&qa.getQA().pub_date).getFullYear()}-{String(new Date(qa.getQA()!=undefined&&qa.getQA().pub_date).getMonth()).length==1?'0'+new Date(qa.getQA()!=undefined&&qa.getQA().pub_date).getMonth():new Date(qa.getQA()!=undefined&&qa.getQA().pub_date).getMonth()}-{new Date(qa.getQA()!=undefined&&qa.getQA().pub_date).getDate()} {new Date(qa.getQA()!=undefined&&qa.getQA().pub_date).getHours()}:{new Date(qa.getQA()!=undefined&&qa.getQA().pub_date).getMinutes()}</span>
                         </div>
                     </div>
                 </div>
                 <div className="themes">
                     <div className="themes">
-                        {themes.map(v=>{return  <span>{v}</span>})}
+                        {qa.getQA()!=undefined&&qa.getQA().themes.map(v=>{return  <span>{v}</span>})}
                     </div>
+                </div>
+            </div>
+            <div className="body">
+                <h3>{qa.getQA()!=undefined&&qa.getQA().header}</h3>
+                <p>{qa.getQA()!=undefined&&qa.getQA().description}</p>
+                <div className="img">
+                    <img src={qa.getQA()!=undefined&&qa.getQA().headerImg} alt="" />
+                </div>
+                <div className="link">
+                    <span>Ссылка:</span>
+                    <a href={qa.getQA()!=undefined&&qa.getQA().link}>{qa.getQA()!=undefined&&qa.getQA().link}</a>
                 </div>
             </div>
         </div>

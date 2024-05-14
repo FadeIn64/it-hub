@@ -5,5 +5,6 @@ export const api ={
     getUserByLogin: '/api/users',
     getAllArticles:'/api/articles/all',
     getAllQa: '/api/questions/all',
+    getQa: '/api/questions',
     getUser: '/api/users'
 }

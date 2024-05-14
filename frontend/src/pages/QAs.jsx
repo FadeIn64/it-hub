@@ -7,6 +7,7 @@ import qa from "../utils/stores/qa.ts";
 import QA from "./QA.jsx";
 import qaUtil from "../utils/axios/qa.ts";
 import '../assets/css/qa.css'
+import Filters from "../components/Filters.jsx";
 const QAs = observer(()=>{
     useEffect(()=>{
         const q= new qaUtil()
@@ -16,9 +17,10 @@ const QAs = observer(()=>{
         <Background></Background>
         <Sidebar></Sidebar>
         <div className="qa_b">
+            <Filters mode='qa'></Filters>
             <div className="b">
                 {qa.getQAs().map(v=>{
-                return <QA date={v.pub_date} header={v.header} text={v.description} themes={v.themes} author={v.author}></QA>
+                return <QA data={v}></QA>
                 })}
             </div>
         </div>

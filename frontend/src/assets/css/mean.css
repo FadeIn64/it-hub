@@ -42,23 +42,45 @@
 .mean .body {
   z-index: 10;
 }
+.mean .body .h {
+  display: flex;
+  justify-content: center;
+  padding: 0 1.1875rem;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+  width: 70%;
+  margin: auto;
+}
+.mean .body .h .l {
+  width: 47%;
+}
+.mean .body .h .l img {
+  width: 100%;
+}
+.mean .body .h .r {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .mean .body h1 {
   font-size: 2.375rem;
   font-weight: 500;
-  text-align: center;
   color: white;
+  line-height: 150%;
 }
 .mean .body h2 {
   font-size: 1.5625rem;
   font-weight: 500;
-  text-align: center;
   color: white;
+  text-align: center;
   margin-top: 3.125rem;
+  line-height: 150%;
 }
 .mean .body h3 {
   font-size: 1rem;
   font-weight: 500;
-  text-align: center;
+  line-height: 150%;
   color: white;
 }
 .mean .body .blocks {
@@ -85,4 +107,4 @@
   font-size: 2.375rem;
   color: white;
   font-weight: 500;
-}/*# sourceMappingURL=mean.css.map */
+}
