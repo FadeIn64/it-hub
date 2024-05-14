@@ -128,6 +128,25 @@ services:
     env_file:
       - docker/articles/article-service.env
 
+  qa_db:
+    image: postgres:15-alpine3.19
+    env_file:
+      - docker/qa/qas-db.env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U username -d summer" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "5436:5432"
+    networks:
+      - qas_net
+    volumes:
+      - ./docker/qa/db-scripts:/docker-entrypoint-initdb.d/
+      - qas_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
   nginx:
     image: nginx:latest
     ports:
@@ -148,6 +167,7 @@ volumes:
   users-data:
   competitions_data:
   articles_data:
+  qas_data:
 
 networks:
   apis_net:
@@ -159,4 +179,6 @@ networks:
   competitions_net:
     driver: bridge
   articles_net:
+    driver: bridge
+  qas_net:
     driver: bridge
