@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="articles-service" />
+        <module name="qa-service" />
         <module name="user-service" />
         <module name="competition-service" />
         <module name="simple-sso" />
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="articles-service" options="-parameters" />
       <module name="competition-service" options="-parameters" />
+      <module name="qa-service" options="-parameters" />
       <module name="simple-sso" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
