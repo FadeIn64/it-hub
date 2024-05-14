@@ -23,6 +23,12 @@ public class CompetitionService {
     public List<Competition> findAll(){
         return competitionRepo.findAllWithThemes();
     }
+    public List<Competition> findAllUserCompetitions(String login){
+        return competitionRepo.findAllUserCompetitions(login);
+    };
+    public List<String> findAllUser(Integer id){
+        return competitionRepo.findAllUser(id);
+    }
 
     public int create(Competition competition){
         var _new = new CompetitionDao(competition);
@@ -48,4 +54,6 @@ public class CompetitionService {
         competition.setPub_date(_new.getPub_date());
         return competition;
     }
+
+
 }
