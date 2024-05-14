@@ -13,32 +13,32 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class ArticleService {
-    ArticleRepo competitionRepo;
-    ArticleThemeRepo competitionThemeRepo;
+    ArticleRepo articleRepo;
+    ArticleThemeRepo articleThemeRepo;
 
     public Article findById(int id){
-        return competitionRepo.findByIdWithThemes(id);
+        return articleRepo.findByIdWithThemes(id);
     }
 
     public List<Article> findAll(){
-        return competitionRepo.findAllWithThemes();
+        return articleRepo.findAllWithThemes();
     }
 
     public int create(Article competition){
         var _new = new ArticleDao(competition);
-        _new = competitionRepo.save(_new);
+        _new = articleRepo.save(_new);
 
         var themes = competition.getThemes();
         for (String t : themes){
             var _nt = new ArticleTheme(_new.getId(), t);
-            competitionThemeRepo.save(_nt);
+            articleThemeRepo.save(_nt);
         }
         return _new.getId();
     }
 
     public Article save(Article article){
         var _new = new ArticleDao(article);
-        _new = competitionRepo.save(_new);
+        _new = articleRepo.save(_new);
         article.setId(_new.getId());
         article.setAuthor(_new.getAuthor());
         article.setHeader(_new.getHeader());

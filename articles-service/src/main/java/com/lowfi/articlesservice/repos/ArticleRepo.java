@@ -11,7 +11,7 @@ public interface ArticleRepo extends CrudRepository<ArticleDao, Integer> {
 
     @Query("""
         select * from articles_w_themes
-        where login = :login
+        where id = :id
     """)
     Article findByIdWithThemes(int id);
 
