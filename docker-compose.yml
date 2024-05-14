@@ -147,6 +147,19 @@ services:
       - qas_data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  qa-server:
+    image: qa-server:0.0.1
+    build:
+      context: ./qa-service
+      dockerfile: Dockerfile
+    depends_on:
+      - qa_db
+    networks:
+      - apis_net
+      - qas_net
+    env_file:
+      - docker/qa/qa-service.env
+
   nginx:
     image: nginx:latest
     ports:
