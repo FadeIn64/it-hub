@@ -35,6 +35,16 @@ const Sidebar =observer(()=>{
                             Уведомления
                         </span>
                     </li>
+                    <li onClick={()=>{nav(config.qa.qa)}}>
+                        <span>
+                            Q&A
+                        </span>
+                    </li>
+                    <li>
+                        <span>
+                            Git
+                        </span>
+                    </li>
                 </ul>
             </nav>
         

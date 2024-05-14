@@ -4,4 +4,6 @@ export const api ={
     getAllComp: '/api/competition/all',
     getUserByLogin: '/api/users',
     getAllArticles:'/api/articles/all',
+    getAllQa: '/api/questions/all',
+    getUser: '/api/users'
 }

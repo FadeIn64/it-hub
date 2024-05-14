@@ -15,5 +15,10 @@ export const config ={
     },
     chats:{
         chats: '/chats'
+    },
+    qa:{
+        qa: '/qa',
+        question: '/question'
     }
+
 }

@@ -10,6 +10,8 @@ import Challenge from './pages/Challenge.jsx';
 import Auth from './pages/Auth.jsx';
 import Mean from './pages/Mean.jsx';
 import Chats from './pages/Chats.jsx';
+import QAs from './pages/QAs.jsx';
+import QAElement from './components/QAElement.jsx';
 function App() {
   window.alert = console.log
   return <>
@@ -34,6 +36,10 @@ function App() {
       <Route path={config.posts.challenge} element={<Challenge></Challenge>}>
       </Route>
       <Route path={config.chats.chats} element={<Chats></Chats>}>
+      </Route>
+      <Route path={config.qa.qa} element={<QAs></QAs>}>
+      </Route>
+      <Route path={config.qa.question} element={<QAElement></QAElement>}>
       </Route>
       <Route path={'/*'} element={<Mean></Mean>}>
       </Route>
