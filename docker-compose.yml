@@ -90,8 +90,6 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - competitions-db
-    ports:
-      - "8082:8080"
     networks:
       - apis_net
       - competitions_net
@@ -117,6 +115,19 @@ services:
       - articles_data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  article-server:
+    image: article-server:0.0.1
+    build:
+      context: ./articles-service
+      dockerfile: Dockerfile
+    depends_on:
+      - articles-db
+    networks:
+      - apis_net
+      - articles_net
+    env_file:
+      - docker/articles/article-service.env
+
   nginx:
     image: nginx:latest
     ports:
@@ -127,6 +138,7 @@ services:
       - competition-server
       - sso-server
       - users-service
+      - article-server
     volumes:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
