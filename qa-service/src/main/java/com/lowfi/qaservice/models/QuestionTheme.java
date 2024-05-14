@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("articles_themes")
+@Table("question_themes")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticleTheme {
+public class QuestionTheme {
     int id;
     String name;
 }

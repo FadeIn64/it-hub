@@ -1,7 +1,7 @@
 package com.lowfi.qaservice.controllers;
 
-import com.lowfi.articlesservice.models.Article;
-import com.lowfi.articlesservice.services.ArticleService;
+import com.lowfi.qaservice.models.Question;
+import com.lowfi.qaservice.services.QuestionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/articles")
+@RequestMapping("api/questions")
 @AllArgsConstructor
-public class ArticleController {
-    ArticleService articleService;
+public class QuestionController {
+    QuestionService questionService;
     @GetMapping("/{id}")
     ResponseEntity getById(@PathVariable int id){
-        Article com = articleService.findById(id);
+        Question com = questionService.findById(id);
         if (com == null)
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         return ResponseEntity.ok(com);
     }
     @GetMapping("/all")
     ResponseEntity getAll(){
-        return ResponseEntity.ok(articleService.findAll());
+        return ResponseEntity.ok(questionService.findAll());
     }
 }

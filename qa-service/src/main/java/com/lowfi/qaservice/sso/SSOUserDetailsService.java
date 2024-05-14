@@ -1,6 +1,6 @@
 package com.lowfi.qaservice.sso;
 
-import com.lowfi.articlesservice.sso.details.User;
+import com.lowfi.qaservice.sso.details.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
