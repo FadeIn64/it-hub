@@ -51,6 +51,8 @@ services:
       - users-data:/var/lib/postgresql/data
     restart: unless-stopped
 
+
+
   users-service:
     image: users-service:0.0.1
     build:
@@ -171,8 +173,18 @@ services:
       - sso-server
       - users-service
       - article-server
+      - qa-server
+      - frontend
     volumes:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
+
+  frontend:
+    image: front:0.0.1
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - apis_net
 
 
 volumes:
