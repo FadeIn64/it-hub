@@ -6,6 +6,7 @@ import i1 from '../assets/imgs/image 6.png'
 import i2 from '../assets/imgs/image 6 (1).png'
 import i3 from '../assets/imgs/image 6 (2).png'
 import i4 from '../assets/imgs/image 7.png'
+import logo from '../assets/imgs/logo.svg'
 import { useNavigate } from "react-router-dom";
 import { config } from "../config.ts";
 const Mean = observer(()=>{
@@ -20,8 +21,16 @@ return <div className="mean">
         </div>
     </div>
     <div className="body">
-        <h1>Участвуй в хакатонах и конкурсах с СГТУ!</h1>
-        <h3>Платформа для студентов, которые хотят развиваться в сфере технологий и науки.</h3>
+        <div className="h">
+            <div className="l">
+                <img src={logo} alt="" />
+            </div>
+            <div className="r">
+                <h1>Участвуй в хакатонах и конкурсах с СГТУ!</h1>
+                <h3>Платформа для студентов, которые хотят развиваться в сфере технологий и науки.</h3>
+            </div>
+        </div>
+
         <h2>Что мы предлагаем?</h2>
         <div className="blocks">
             <div className="block">

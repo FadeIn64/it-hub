@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Requests } from "../utils/axios/auth.ts";
 import { useNavigate } from "react-router-dom";
 import { config } from "../config.ts";
+import Players from "../components/Players.jsx";
 
 const Challenge=observer(()=>{
     const [state, setState] = useState(false)
@@ -86,6 +87,7 @@ const Challenge=observer(()=>{
                     <span>Хочу участвовать</span>
                 </div>
             </div>
+            <Players></Players>
         </div>
         
     </div>
