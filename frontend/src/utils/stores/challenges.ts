@@ -8,6 +8,9 @@ class challengesStore{
     private _challenges: any = [];
     private _challenge: any;
 
+    private _players: any = [];
+    private _player: any;
+
     getChallenges(){
         return this._challenges;
     }
@@ -23,6 +26,23 @@ class challengesStore{
     setChallenge(chl: any){
         this._challenge=chl;
     }
+    
+    getPlayers(){
+        return this._players;
+    }
+
+    setPlayers(players: any){
+        this._players=players;
+    }
+
+    getPlayer(){
+        return this._player;
+    }
+
+    setPlayer(player: any){
+        this._player=player;
+    }
+
  }
 
  export default new challengesStore()

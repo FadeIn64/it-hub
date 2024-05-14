@@ -19,7 +19,7 @@ return <>
         <div className="form">
             <h2>Вход</h2>
             <input type="text" value={login} placeholder="Логин" onChange={(e)=>{setLogin(e.target.value)}}/>
-            <input type="pasword" value={pass} placeholder="Пароль" onChange={(e)=>{setPass(e.target.value)}}/>
+            <input type="password" value={pass} placeholder="Пароль" onChange={(e)=>{setPass(e.target.value)}}/>
             <div className="btn" onClick={async ()=>{
                 try {
                   const r= await  o.auth(login,pass)

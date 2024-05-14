@@ -22,6 +22,24 @@
   border: 4px solid #1400FF;
   border-radius: 8px;
 }
+.post .post_cont .c .pre {
+  display: flex;
+  justify-content: space-between;
+}
+.post .post_cont .c .pre .date span {
+  color: rgba(255, 255, 255, 0.6509803922);
+  font-size: 1rem;
+  font-weight: 100;
+}
+.post .post_cont .c .pre .themes {
+  display: flex;
+}
+.post .post_cont .c .pre .themes span {
+  margin-left: 1.0625rem;
+  color: rgba(255, 255, 255, 0.6509803922);
+  font-size: 1rem;
+  font-weight: 100;
+}
 .post .post_cont .c .header {
   display: flex;
   align-items: center;
@@ -57,4 +75,4 @@
 }
 .post .post_cont .c .img a img {
   width: 100%;
-}
+}/*# sourceMappingURL=post.css.map */
