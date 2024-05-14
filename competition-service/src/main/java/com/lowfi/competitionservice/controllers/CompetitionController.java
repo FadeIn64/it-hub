@@ -3,7 +3,6 @@ package com.lowfi.competitionservice.controllers;
 import com.lowfi.competitionservice.models.Competition;
 import com.lowfi.competitionservice.services.CompetitionService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,5 +25,19 @@ public class CompetitionController {
     @GetMapping("/all")
     ResponseEntity getAll(){
         return ResponseEntity.ok(competitionService.findAll());
+    }
+    @GetMapping("/allByUser/{login}")
+    ResponseEntity getAllById(@PathVariable String login){
+        var res = competitionService.findAllUserCompetitions(login);
+        if (res.isEmpty())
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(res);
+    }
+    @GetMapping("/allUsers/{id}")
+    ResponseEntity getAllUserNoTeam(@PathVariable int id){
+        var res = competitionService.findAllUser(id);
+        if (res.isEmpty())
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return ResponseEntity.ok(res);
     }
 }

@@ -20,4 +20,16 @@ public interface CompetitionRepo extends CrudRepository<CompetitionDao, Integer>
         order by pub_date desc
     """)
     List<Competition> findAllWithThemes();
+    @Query("""
+    select c.* from competitions c
+    join pretender p on c.id = p.competition
+    where login = :login;
+            """)
+    List<Competition> findAllUserCompetitions(String login);
+
+    @Query("""
+            select login from competitions c
+                join pretender p on c.id = p.competition
+                where c.id = :id""")
+    List<String> findAllUser(Integer id);
 }
