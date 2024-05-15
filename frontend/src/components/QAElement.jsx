@@ -8,6 +8,8 @@ import { Requests } from "../utils/axios/auth.ts";
 import { useNavigate, useParams } from "react-router-dom";
 import qa from "../utils/stores/qa.ts";
 import qaUtil from "../utils/axios/qa.ts";
+import seacrhCookies from "../utils/functions/searchCookies.ts";
+import Footer from "./Footer.jsx";
 
 const QAElement=observer(()=>{
     const [user, setUser]= useState(null)
@@ -15,11 +17,10 @@ const QAElement=observer(()=>{
     const nav = useNavigate()
     const param=useParams()
     useEffect(()=>{
-        if(document.cookie.length==0){
+        const data= seacrhCookies('auth')
+        if(data==0){
             nav(config.auth.auth)
         }else{
-            const cookee= document.cookie.split('=')[1]
-            const data = JSON.parse(cookee)
             const o = new Requests()
             const res = o.auth(data.login,data.password)
             if(res){
@@ -48,7 +49,8 @@ const QAElement=observer(()=>{
     },[])
 
     if(state)
-    return <div className="qaelement">
+    return <>
+    <div className="qaelement">
         <Background></Background>
         <Sidebar></Sidebar>
         <div className="qae_b">
@@ -85,6 +87,8 @@ const QAElement=observer(()=>{
             </div>
         </div>
     </div>
+    <Footer></Footer>
+    </>
     return <></>
 })
 

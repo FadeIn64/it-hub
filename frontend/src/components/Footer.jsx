@@ -22,6 +22,7 @@ const Footer = observer(()=>{
                     <span onClick={()=>{nav(config.posts.posts)}}>Статьи</span>
                     <span onClick={()=>{nav(config.posts.challenges)}}>Конкурсы</span>
                     <span onClick={()=>{nav(config.posts.challenges)}}>Хакатоны</span>
+                    <span onClick={()=>{nav(config.qa.qa)}}>Q&A</span>
                 </div>
                 <div className="col3">
                     <h4>Информация</h4>

@@ -9,34 +9,36 @@ import Background from "../components/Background.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import chats from "../utils/stores/chats.ts";
 import ChatElement from "../components/ChatElement.jsx";
+import seacrhCookies from "../utils/functions/searchCookies.ts";
+import Footer from "../components/Footer.jsx";
 const Chats = observer(()=>{
     const [state, setState] = useState(false)
     const nav = useNavigate()
     useEffect(()=>{
-        if(document.cookie.length==0){
+        const data= seacrhCookies('auth')
+        if(data==0){
             nav(config.auth.auth)
         }else{
             const o = new Requests()
-            const cookee= document.cookie.split('=')[1]
-            const data = JSON.parse(cookee)
             const res = o.auth(data.login, data.password)
             setState(res)
         }
         chats.setChats([
             {
-                avatar:  'https://cdn.ren.tv/cache/1200x630/media/img/6d/54/6d54c97705a4d0225a5935b35adc9a078d30442d.jpg',
-                name: 'Максим Марцинкевич Тесак',
-                text: 'Привет! Меня зовут Илья, и я студент ИнПИТ.  программирования на различных языках, тлогий.'
+                avatar: 'https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/469202/confused-man-question-wondering-thinking.jpg&w=2000&op=resize',
+                name: 'Александр Ермолович Витебский',
+                text: 'Помогите...'
             },
             {
-                avatar:  'https://cdn.ren.tv/cache/1200x630/media/img/6d/54/6d54c97705a4d0225a5935b35adc9a078d30442d.jpg',
-                name: 'Максим Марцинкевич Тесак',
-                text: 'Привет! Меня зовут Илья, и я студент ИнПИТ.  программирования на различных языках, тлогий.'
+                avatar: 'https://catherineasquithgallery.com/uploads/posts/2021-02/1614510957_41-p-na-belom-fone-chelovek-53.jpg',
+                name: 'Иван Соболев Петрович',
+                text: 'Очень познавательная статья!!'
             }
         ])
     },[])
     if(state)
-    return <div className="chats_c">
+    return <>
+    <div className="chats_c">
         <Background></Background>
         <Sidebar></Sidebar>
         <div className="chats">
@@ -62,6 +64,8 @@ const Chats = observer(()=>{
             </div>
         </div>
     </div>
+    <Footer></Footer>
+    </>
  
     return <></>
 })

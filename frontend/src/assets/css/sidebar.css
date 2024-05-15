@@ -6,6 +6,11 @@
   overflow: hidden;
   height: 100%;
 }
+@media screen and (max-width: 425px) {
+  .n {
+    width: 100%;
+  }
+}
 .n .sidebar_cont .sidebar {
   padding: 2.0625rem;
   background: #1E1E1E;
@@ -20,18 +25,35 @@
   flex-direction: column;
   justify-content: space-between;
 }
+@media screen and (max-width: 425px) {
+  .n .sidebar_cont .sidebar {
+    flex-direction: row;
+    padding: 0.5rem;
+    width: 90%;
+    margin: 10rem auto 0;
+    height: 100%;
+  }
+}
 .n .sidebar_cont .sidebar ul {
   list-style: none;
   padding: 0;
 }
-.n .sidebar_cont .sidebar ul li span {
+@media screen and (max-width: 425px) {
+  .n .sidebar_cont .sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.n .sidebar_cont .sidebar ul li span, .n .sidebar_cont .sidebar ul li a {
   color: white;
   font-weight: 500;
   font-size: 1.5625rem;
   line-height: 2.3438rem;
   letter-spacing: -1.1%;
+  text-decoration: none;
 }
-.n .sidebar_cont .sidebar ul li span:hover {
+.n .sidebar_cont .sidebar ul li span:hover, .n .sidebar_cont .sidebar ul li a:hover {
   text-shadow: 0 4px 4px #1400FF;
 }
 .n .sidebar_cont .sidebar .menu > li:not(:first-child), .n .sidebar_cont .sidebar .bottom > li:not(:first-child) {

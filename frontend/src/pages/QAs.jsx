@@ -8,23 +8,27 @@ import QA from "./QA.jsx";
 import qaUtil from "../utils/axios/qa.ts";
 import '../assets/css/qa.css'
 import Filters from "../components/Filters.jsx";
+import Footer from "../components/Footer.jsx";
 const QAs = observer(()=>{
     useEffect(()=>{
         const q= new qaUtil()
         q.getAll()
     },[])
-    return <div className="qas">
+    return <>
+    <div className="qas">
         <Background></Background>
         <Sidebar></Sidebar>
         <div className="qa_b">
             <Filters mode='qa'></Filters>
             <div className="b">
-                {qa.getQAs().map(v=>{
+                {qa.getQAs()!=undefined&&qa.getQAs().map(v=>{
                 return <QA data={v}></QA>
                 })}
             </div>
         </div>
     </div>
+    <Footer></Footer>
+    </>
 })
 
 export default QAs

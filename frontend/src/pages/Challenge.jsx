@@ -5,92 +5,99 @@ import Sidebar from "../components/Sidebar.jsx";
 import Footer from "../components/Footer.jsx";
 import { useEffect, useState } from "react";
 import { Requests } from "../utils/axios/auth.ts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { config } from "../config.ts";
 import Players from "../components/Players.jsx";
+import usersUtil from "../utils/axios/users.ts";
+import { competitions } from "../utils/axios/competitions.ts";
+import seacrhCookies from "../utils/functions/searchCookies.ts";
+import '../assets/css/challenges.css'
 
 const Challenge=observer(()=>{
     const [state, setState] = useState(false)
+    const [user, setUser]= useState(null)
     const nav = useNavigate()
+    const param = useParams()
     useEffect(()=>{
-        if(document.cookie.length==0){
+        const data= seacrhCookies('auth')
+        if(data==0){
             nav(config.auth.auth)
         }else{
             const o = new Requests()
-            const cookee= document.cookie.split('=')[1]
-            const data = JSON.parse(cookee)
             const res = o.auth(data.login, data.password)
             setState(res)
+
+            if(res){
+                let author;
+                if(challenges.getChallenge()==undefined){
+                    const ch= new competitions()
+                    ch.getCompById(param.id).then(v=>{
+                        author= challenges.getChallenge().author
+                        const user= new usersUtil()
+                        user.getUser(author).then(v=>{
+                            setUser(v)
+                        })
+                    })
+                }
+                else{
+                    author= challenges.getChallenge().author
+                    const user= new usersUtil()
+                    user.getUser(author).then(v=>{
+                        setUser(v)
+                    })
+                }
+            }
+            setState(res)
+       
         }
     },[])
-    let avatar;
-    let name;
-    let title;
-    let img;
-    let text;
-    let theme;
-    let date;
-    if(challenges.getChallenge()!=undefined){
-        avatar= challenges.getChallenge().avatar
-        name= challenges.getChallenge().name
-        title= challenges.getChallenge().title
-        img= challenges.getChallenge().img
-        text= challenges.getChallenge().text
-        theme= challenges.getChallenge().theme
-        date= challenges.getChallenge().date
-    }
-    else{
-        avatar = localStorage.getItem('avatar')
-        name = localStorage.getItem('name')
-        title = localStorage.getItem('title')
-        img = localStorage.getItem('img')
-        text = localStorage.getItem('text')
-        theme = localStorage.getItem('theme').split(',')
-        date = localStorage.getItem('date')
-    }
     if(state)
     return <>
     <div className="challenges">
         <Background></Background>
         <Sidebar></Sidebar>
-        <div className="chals_cont">
+        <div className="chals_cont2">
             <div className="challenge_p">
                 <div className="pre">
                     <div className="date">
-                        <span>{new Date(date).getFullYear()}-{String(new Date(date).getMonth()).length==1?'0'+new Date(date).getMonth():new Date(date).getMonth()}-{new Date(date).getDate()} {new Date(date).getHours()}:{new Date(date).getMinutes()}</span>
+                        <span>{new Date(challenges.getChallenge()&&challenges.getChallenge().pub_date).getFullYear()}-{String(new Date(challenges.getChallenge()&&challenges.getChallenge().pub_date).getMonth()).length==1?'0'+new Date(challenges.getChallenge()&&challenges.getChallenge().pub_date).getMonth():new Date(challenges.getChallenge()&&challenges.getChallenge().pub_date).getMonth()}-{new Date(challenges.getChallenge()&&challenges.getChallenge().pub_date).getDate()} {new Date(challenges.getChallenge()&&challenges.getChallenge().pub_date).getHours()}:{new Date(challenges.getChallenge()&&challenges.getChallenge().pub_date).getMinutes()}</span>
                     </div>
                     <div className="themes">
-                        {theme.map(v=>{return  <span>{v}</span>})}
+                        {challenges.getChallenge()&&challenges.getChallenge().themes.map(v=>{return  <span>{v}</span>})}
                     </div>
                 </div>
-                <h2>Конкурс «{title}»</h2>
+                <h2>Конкурс «{challenges.getChallenge()&&challenges.getChallenge().header}»</h2>
                 <div className="meaners">
-                    <span className="y">Организаторы:</span>
-                    <div className="meaner">
+                    <span className="y">Организатор:</span>
+                    <div className="meaner" onClick={()=>{nav(config.profile.way+'/'+user.login)}}>
                         <div className="img">
-                            <img src={avatar} alt="" />
+                            <img src={user&&user.avatar} alt="" />
                         </div>
-                        <span>{name}</span>
+                        <span>{user&&user.surname} {user&&user.name} {user&&user.patronymic}</span>
                     </div>
                 </div>
                 <div className="text">
-                    <p>{text}</p>
+                    <p>{challenges.getChallenge()&&challenges.getChallenge().description}</p>
                 </div>
                 <div className="imgg">
-                    <a href={img} target="_black">
-                        <img src={img} alt="" />
+                    <a href={challenges.getChallenge()&&challenges.getChallenge().headerImg} target="_black">
+                        <img src={challenges.getChallenge()&&challenges.getChallenge().headerImg} alt="" />
                     </a>
                 </div>
         
                 <div className="ye" onClick={()=>{
                 }}>
-                    <span>Хочу участвовать</span>
+                    <span onClick={()=>{
+                        const cp = new competitions()
+                        cp.subscribe(param.id, seacrhCookies('auth').login)
+                    }}>Хочу участвовать</span>
                 </div>
             </div>
             <Players></Players>
         </div>
+        </div>
         
-    </div>
+        
     <Footer></Footer>
     </>
     return <></>

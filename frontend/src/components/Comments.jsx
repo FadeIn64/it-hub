@@ -10,14 +10,14 @@ const Comments =observer(()=>{
     useEffect(()=>{
         post.setComments([
             {
-                avatar: 'https://cdn.ren.tv/cache/1200x630/media/img/6d/54/6d54c97705a4d0225a5935b35adc9a078d30442d.jpg',
-                name: 'Максим Марцинкевич Тесак',
-                comment: 'Здравствуйте мои маленькие любители экстремизма'
+                avatar: 'https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/469202/confused-man-question-wondering-thinking.jpg&w=2000&op=resize',
+                name: 'Александр Ермолович Витебский',
+                comment: 'Автор молодец!'
             },
             {
-                avatar: 'https://cdn.ren.tv/cache/1200x630/media/img/6d/54/6d54c97705a4d0225a5935b35adc9a078d30442d.jpg',
-                name: 'Максим Марцинкевич Тесак',
-                comment: 'Здравствуйте мои маленькие любители экстремизма'
+                avatar: 'https://catherineasquithgallery.com/uploads/posts/2021-02/1614510957_41-p-na-belom-fone-chelovek-53.jpg',
+                name: 'Иван Соболев Петрович',
+                comment: 'Очень познавательная статья!!'
             }
         ])
     },[])

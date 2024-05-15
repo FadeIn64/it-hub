@@ -1,12 +1,13 @@
 
 class filtersFunctions{
-    async filter(value: string, data: any[]){
-        data.filter(v=>{
-            if(v.themes.indexOf(value)!=-1){
+    filter(value: string, data: any[]){
+        let arr=Object.assign(data)
+        let r=arr.filter(v=>{
+            if(v.themes.includes(value)){
                 return v
             }
         })
-        return data
+        return r
     }
 }
 

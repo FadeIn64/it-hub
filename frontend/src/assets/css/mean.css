@@ -26,6 +26,11 @@
   box-sizing: border-box;
   z-index: 2;
 }
+@media screen and (max-width: 425px) {
+  .mean .header {
+    padding: 1rem;
+  }
+}
 .mean .header .btn {
   padding: 0.5625rem 1.1875rem;
   border-radius: 8px;
@@ -51,6 +56,13 @@
   width: 70%;
   margin: auto;
 }
+@media screen and (max-width: 425px) {
+  .mean .body .h {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+}
 .mean .body .h .l {
   width: 47%;
 }
@@ -62,6 +74,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+@media screen and (max-width: 425px) {
+  .mean .body .h .r {
+    width: 100%;
+    text-align: center;
+  }
 }
 .mean .body h1 {
   font-size: 2.375rem;
@@ -103,8 +121,28 @@
   z-index: 10;
   margin-top: 3.125rem;
 }
+@media screen and (max-width: 425px) {
+  .mean .body .blocks .block {
+    width: 100%;
+  }
+}
 .mean .body .blocks .block span {
   font-size: 2.375rem;
   color: white;
   font-weight: 500;
+}
+@media screen and (max-width: 425px) {
+  .mean .body .blocks .block span {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .mean .body .blocks .block .img {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .mean .body .blocks .block .img img {
+    width: 100%;
+  }
 }
