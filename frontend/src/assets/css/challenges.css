@@ -3,11 +3,23 @@
   display: flex;
   width: 100vw;
 }
+@media screen and (max-width: 425px) {
+  .challenges {
+    flex-direction: column;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+  }
+}
 .challenges .comps {
   display: flex;
   flex-direction: column;
   margin-left: 1.0625rem;
-  margin-top: 10rem;
+  margin-top: 5rem;
+}
+@media screen and (max-width: 425px) {
+  .challenges .comps {
+    margin-left: 0;
+  }
 }
 .challenges .comps .chals_cont {
   width: 80vw;
@@ -18,6 +30,12 @@
   border: 4px solid #1400FF;
   border-radius: 8px;
 }
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 .challenges .comps .chals_cont > *:not(:first-child) {
   margin-top: 1.0625rem;
 }
@@ -27,6 +45,11 @@
 .challenges .comps .chals_cont .challenge_p {
   position: relative;
   padding: 1.9375rem 2.4375rem;
+}
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont .challenge_p {
+    padding: 0.5625rem 1.1875rem;
+  }
 }
 .challenges .comps .chals_cont .challenge_p .pre {
   display: flex;
@@ -50,9 +73,20 @@
   display: flex;
   align-items: center;
 }
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont .challenge_p .meaners {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 .challenges .comps .chals_cont .challenge_p .meaners .meaner {
   display: flex;
   align-items: center;
+}
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont .challenge_p .meaners .meaner {
+    margin-top: 0.5rem;
+  }
 }
 .challenges .comps .chals_cont .challenge_p .meaners .meaner .img {
   height: 4.4375rem;
@@ -74,6 +108,11 @@
   font-weight: 500;
   margin-left: 1.1875rem;
 }
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont .challenge_p .meaners .meaner span {
+    font-size: 1rem;
+  }
+}
 .challenges .comps .chals_cont .challenge_p .meaners .y {
   font-size: 1.5625rem;
   color: white;
@@ -81,10 +120,21 @@
   margin-left: 1.1875rem;
   margin-right: 1.0625rem;
 }
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont .challenge_p .meaners .y {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+}
 .challenges .comps .chals_cont .challenge_p h2 {
   font-size: 1.5625rem;
   font-weight: 500;
   color: white;
+}
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont .challenge_p h2 {
+    font-size: 1.2rem;
+  }
 }
 .challenges .comps .chals_cont .challenge_p .text {
   color: white;
@@ -108,6 +158,12 @@
   border: 4px solid #1400FF;
   cursor: pointer;
 }
+@media screen and (max-width: 425px) {
+  .challenges .comps .chals_cont .challenge_p .ye, .challenges .comps .chals_cont .challenge_p .more {
+    padding: 0.4rem 1rem;
+    margin: 2rem auto 0;
+  }
+}
 .challenges .chals_cont2 {
   width: 80vw;
   margin-top: 10rem;
@@ -118,6 +174,16 @@
   border: 4px solid #1400FF;
   border-radius: 8px;
 }
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 {
+    flex-direction: column;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    margin-left: 0;
+    width: 100%;
+    margin-top: 5rem;
+  }
+}
 .challenges .chals_cont2 > *:not(:first-child) {
   margin-top: 1.0625rem;
 }
@@ -127,6 +193,11 @@
 .challenges .chals_cont2 .challenge_p {
   position: relative;
   padding: 1.9375rem 2.4375rem;
+}
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 .challenge_p {
+    padding: 0.5625rem 1.1875rem;
+  }
 }
 .challenges .chals_cont2 .challenge_p .pre {
   display: flex;
@@ -150,9 +221,20 @@
   display: flex;
   align-items: center;
 }
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 .challenge_p .meaners {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 .challenges .chals_cont2 .challenge_p .meaners .meaner {
   display: flex;
   align-items: center;
+}
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 .challenge_p .meaners .meaner {
+    margin-top: 0.5rem;
+  }
 }
 .challenges .chals_cont2 .challenge_p .meaners .meaner .img {
   height: 4.4375rem;
@@ -174,6 +256,11 @@
   font-weight: 500;
   margin-left: 1.1875rem;
 }
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 .challenge_p .meaners .meaner span {
+    font-size: 1rem;
+  }
+}
 .challenges .chals_cont2 .challenge_p .meaners .y {
   font-size: 1.5625rem;
   color: white;
@@ -181,10 +268,21 @@
   margin-left: 1.1875rem;
   margin-right: 1.0625rem;
 }
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 .challenge_p .meaners .y {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+}
 .challenges .chals_cont2 .challenge_p h2 {
   font-size: 1.5625rem;
   font-weight: 500;
   color: white;
+}
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 .challenge_p h2 {
+    font-size: 1.2rem;
+  }
 }
 .challenges .chals_cont2 .challenge_p .text {
   color: white;
@@ -207,4 +305,10 @@
   margin-top: 1.5625rem;
   border: 4px solid #1400FF;
   cursor: pointer;
+}
+@media screen and (max-width: 425px) {
+  .challenges .chals_cont2 .challenge_p .ye, .challenges .chals_cont2 .challenge_p .more {
+    padding: 0.4rem 1rem;
+    margin: 2rem auto 0;
+  }
 }/*# sourceMappingURL=challenges.css.map */

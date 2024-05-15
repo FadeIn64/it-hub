@@ -10,15 +10,32 @@
   margin-left: 1rem;
   justify-content: center;
 }
+@media screen and (max-width: 425px) {
+  .comments {
+    padding: 1rem;
+    margin-left: 0;
+    width: 100%;
+  }
+}
 .comments h3 {
   font-weight: 500;
   color: white;
   font-size: 2.375rem;
 }
+@media screen and (max-width: 425px) {
+  .comments h3 {
+    font-size: 1.5rem;
+  }
+}
 .comments .cs {
   display: flex;
   flex-direction: column;
   margin-left: 5.8125rem;
+}
+@media screen and (max-width: 425px) {
+  .comments .cs {
+    margin-left: 0;
+  }
 }
 .comments .cs .comment {
   display: flex;
@@ -35,6 +52,12 @@
   border-radius: 100%;
   position: relative;
   overflow: hidden;
+}
+@media screen and (max-width: 425px) {
+  .comments .cs .comment .info .img {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 .comments .cs .comment .info .img img {
   position: absolute;
@@ -55,6 +78,11 @@
   font-weight: 500;
   color: white;
 }
+@media screen and (max-width: 425px) {
+  .comments .cs .comment .info .i h4 {
+    font-size: 1rem;
+  }
+}
 .comments .cs .comment .info .i span {
   color: rgba(255, 255, 255, 0.6980392157);
   font-size: 1rem;
@@ -73,6 +101,11 @@
   font-weight: 500;
   color: white;
   font-size: 2.375rem;
+}
+@media screen and (max-width: 425px) {
+  .comments .form h4 {
+    font-size: 1.5rem;
+  }
 }
 .comments .form .r {
   display: flex;
@@ -98,10 +131,25 @@
   box-sizing: border-box;
   color: white;
 }
+@media screen and (max-width: 425px) {
+  .comments .form .r .input textarea {
+    font-size: 1rem;
+  }
+}
 .comments .form .r .input img {
   cursor: pointer;
 }
 .comments .form .r .send {
   margin-left: 1.0625rem;
   cursor: pointer;
+}
+@media screen and (max-width: 425px) {
+  .comments .form .r .send {
+    margin-left: 0.5rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .comments .form .r .send img {
+    width: 2rem;
+  }
 }/*# sourceMappingURL=comments.css.map */

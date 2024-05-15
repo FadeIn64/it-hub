@@ -3,6 +3,14 @@
   padding: 0 3.9375rem;
   width: 100vw;
 }
+@media screen and (max-width: 425px) {
+  .qas {
+    flex-direction: column;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
 .qas .qa_b {
   margin-top: 10rem;
   width: 80%;
@@ -10,6 +18,14 @@
   height: 100%;
   box-sizing: border-box;
   overflow: hidden;
+}
+@media screen and (max-width: 425px) {
+  .qas .qa_b {
+    margin-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5rem;
+  }
 }
 .qas .qa_b .b {
   margin-top: 1rem;
@@ -33,6 +49,11 @@
   cursor: pointer;
   padding: 1rem 0;
 }
+@media screen and (max-width: 425px) {
+  .qas .qa_b .b .qa {
+    padding: 0.5625rem 0;
+  }
+}
 .qas .qa_b .b .qa .h {
   display: flex;
   justify-content: space-between;
@@ -42,11 +63,21 @@
   font-weight: 100;
   color: rgba(255, 255, 255, 0.6039215686);
 }
+@media screen and (max-width: 425px) {
+  .qas .qa_b .b .qa .header {
+    margin-top: 0.5rem;
+  }
+}
 .qas .qa_b .b .qa .header h4 {
   font-size: 1.5625rem;
   font-weight: 500;
   color: white;
   margin: 0.5rem 0;
+}
+@media screen and (max-width: 425px) {
+  .qas .qa_b .b .qa .header h4 {
+    font-size: 1.2rem;
+  }
 }
 .qas .qa_b .b .qa .text p {
   font-size: 1rem;
@@ -89,6 +120,14 @@
   padding: 0 3.9375rem;
   width: 100vw;
 }
+@media screen and (max-width: 425px) {
+  .qaelement {
+    flex-direction: column;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
 .qaelement .qae_b {
   margin-top: 10rem;
   padding: 1.25rem 2.8125rem;
@@ -98,6 +137,14 @@
   width: 80%;
   margin-left: 2.375rem;
   box-sizing: border-box;
+}
+@media screen and (max-width: 425px) {
+  .qaelement .qae_b {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 5rem;
+    padding: 0.5625rem 1.1875rem;
+  }
 }
 .qaelement .qae_b .header {
   display: flex;
@@ -152,6 +199,11 @@
   margin: 1rem 0;
   color: white;
 }
+@media screen and (max-width: 425px) {
+  .qaelement .qae_b .body h3 {
+    font-size: 1.2rem;
+  }
+}
 .qaelement .qae_b .body p {
   font-weight: 500;
   font-size: 1rem;
@@ -162,6 +214,11 @@
   margin-top: 1rem;
   width: 100%;
   height: 100%;
+}
+@media screen and (max-width: 425px) {
+  .qaelement .qae_b .body .img img {
+    width: 100%;
+  }
 }
 .qaelement .qae_b .body .link {
   display: flex;

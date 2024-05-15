@@ -8,21 +8,43 @@
   width: calc(100% - 1rem);
   justify-content: center;
 }
+@media screen and (max-width: 425px) {
+  .players {
+    padding: 1rem;
+    margin-left: 0;
+    width: 100%;
+  }
+}
 .players h3 {
   font-weight: 500;
   color: white;
   font-size: 2.375rem;
+}
+@media screen and (max-width: 425px) {
+  .players h3 {
+    font-size: 1.5rem;
+  }
 }
 .players .ps {
   display: flex;
   flex-direction: column;
   margin-left: 5.8125rem;
 }
+@media screen and (max-width: 425px) {
+  .players .ps {
+    margin-left: 0;
+  }
+}
 .players .ps .player {
   display: flex;
   flex-direction: column;
   margin-top: 3.75rem;
   width: 50%;
+}
+@media screen and (max-width: 425px) {
+  .players .ps .player {
+    width: 100%;
+  }
 }
 .players .ps .player .info {
   display: flex;
@@ -34,6 +56,12 @@
   border-radius: 100%;
   position: relative;
   overflow: hidden;
+}
+@media screen and (max-width: 425px) {
+  .players .ps .player .info .img {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 .players .ps .player .info .img img {
   position: absolute;
@@ -71,6 +99,11 @@
   width: -moz-max-content;
   width: max-content;
   margin-left: auto;
+}
+@media screen and (max-width: 425px) {
+  .players .ps .player .btn {
+    padding: 0.4rem 1rem;
+  }
 }
 .players .ps .player .btn span {
   font-size: 1.5625rem;
