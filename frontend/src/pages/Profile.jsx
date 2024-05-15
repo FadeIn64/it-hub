@@ -53,7 +53,7 @@ const Profile =observer(()=>{
                     <p>{profile.getTextAboutMe()!=undefined?profile.getTextAboutMe():''}</p>
                 </div>
                 <div className="projects_block">
-                    <span>Проекты</span>
+                    <span>{profile.getRole()=='student'?'Проекты':'Статьи'}</span>
                     <div className="icons">
                         <img src={s} alt="" />
                         <img src={plus2} alt="" />
@@ -61,7 +61,7 @@ const Profile =observer(()=>{
                 </div>
                 <div className="articles">
                     {profile.getArticles().map(v=>{
-                        return <DemoMeArticle title={v.header} img={v.headerImg} text={v.description}></DemoMeArticle>
+                        return <DemoMeArticle id={v.id} author={v.author} title={v.header} img={v.headerImg} text={v.description} date={v.pub_date} themes={v.themes}></DemoMeArticle>
                     })}
                 </div>
             </div>

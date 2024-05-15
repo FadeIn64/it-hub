@@ -53,7 +53,7 @@ const ProfilePerson =observer(()=>{
                     <p>{profilePerson.getTextAboutMe()!=undefined?profilePerson.getTextAboutMe():''}</p>
                 </div>
                 <div className="projects_block">
-                    <span>Проекты</span>
+                <span>{profilePerson.getRole()=='student'?'Проекты':'Статьи'}</span>
                     <div className="icons">
                         <img src={s} alt="" />
                     </div>
