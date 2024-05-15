@@ -33,26 +33,26 @@ return <div className="mean">
 
         <h2>Что мы предлагаем?</h2>
         <div className="blocks">
-            <div className="block" onClick={()=>{nav(config.posts.challenges)}}>
+            <div className="block">
                 <span>Хакатоны и конкурсы</span>
                 <div className="img">
                     <img src={i1} alt="" />
                 </div>
             </div>
-            <div className="block" onClick={(()=>{nav(config.qa.qa)})}>
+            <div className="block">
                 <span>Q&A</span>
                 <div className="img">
                     <img src={i2} alt="" />
                 </div>
             </div>
-            <a className="block"  href="http://178.154.225.104:8081/" target="_blank">
+            <a className="block" >
                     <span>Git</span>
                     <div className="img">
                         <img src={i3} alt="" />
                     </div>
               
             </a>
-            <div className="block" onClick={()=>{nav(config.posts.posts)}}> 
+            <div className="block"> 
                 <span>Статьи</span>
                 <div className="img">
                     <img src={i4} alt="" />
