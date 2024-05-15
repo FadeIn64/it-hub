@@ -45,7 +45,7 @@ return <div className="mean">
                     <img src={i2} alt="" />
                 </div>
             </div>
-            <a className="block"  href="http://178.154.225.104:8081/">
+            <a className="block"  href="http://178.154.225.104:8081/" target="_blank">
                     <span>Git</span>
                     <div className="img">
                         <img src={i3} alt="" />

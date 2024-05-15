@@ -35,7 +35,7 @@ const Footer = observer(()=>{
             </div>
         </div>
         <div className="ff">
-            <span>Тезническая поддержка</span>
+            <span>Техническая поддержка</span>
             <img src={sstu} alt="" />
         </div>
     </footer>

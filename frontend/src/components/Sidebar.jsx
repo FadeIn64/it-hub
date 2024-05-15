@@ -65,7 +65,7 @@ const Sidebar =observer(()=>{
                     </li>
                     <li>
                         <span >
-                            <a href="http://178.154.225.104:8081/">
+                            <a href="http://178.154.225.104:8081/" target="_blank">
                                 Git
                             </a>
                             
@@ -93,7 +93,7 @@ const Sidebar =observer(()=>{
                     </span>
                 </li>
                 <li>
-                    <a href="https://www.sstu.ru/">
+                    <a href="https://www.sstu.ru/" target="_blank">
                         <img src={sstu} alt="" />
                     </a>
                 
@@ -140,7 +140,7 @@ const Sidebar =observer(()=>{
                     </li>
                     <li>
                         <span >
-                            <a href="http://178.154.225.104:8081/">
+                            <a href="http://178.154.225.104:8081/" target="_blank">
                                 Git
                             </a>
                             
@@ -168,7 +168,7 @@ const Sidebar =observer(()=>{
                     </span>
                 </li>
                 <li>
-                    <a href="https://www.sstu.ru/">
+                    <a href="https://www.sstu.ru/" target="_blank">
                         <img src={sstu} alt="" />
                     </a>
                 
