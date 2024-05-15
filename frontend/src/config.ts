@@ -9,9 +9,11 @@ export const config ={
     },
     posts:{
         posts: '/lenta',
-        post: '/post',
+        post: '/post/:id',
+        post2: '/post',
         challenges: '/challenges',
-        challenge: '/challenge'
+        challenge: '/challenge/:id',
+        challenge2: '/challenge'
     },
     chats:{
         chats: '/chats'

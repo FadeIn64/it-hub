@@ -2,11 +2,16 @@ import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 import { config } from "../config.ts";
 import challenges from "../utils/stores/challenges.ts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import usersUtil from "../utils/axios/users.ts";
 
-const ChallengeDemo=observer(({author,avatar, name, title, img, text, theme,date})=>{
+const ChallengeDemo=observer(({id, author, avatar, name, title, img, text, theme,date})=>{
+    const [user, setUser]= useState(null)
     useEffect(()=>{
-
+        const user= new usersUtil()
+        user.getUser(author).then(v=>{
+            setUser(v)
+        })
     },[])
     const nav = useNavigate()
     return  <div className="challenge_p">
@@ -20,12 +25,12 @@ const ChallengeDemo=observer(({author,avatar, name, title, img, text, theme,date
         </div>
         <h2>Конкурс «{title}»</h2>
         <div className="meaners">
-            <span className="y">Организаторы:</span>
-            <div className="meaner">
+            <span className="y">Организатор:</span>
+            <div className="meaner" onClick={()=>{nav(config.profile.way+'/'+user.login)}}>
                 <div className="img">
-                    <img src={avatar} alt="" />
+                    <img src={user&&user.avatar} alt="" />
                 </div>
-                <span>{name}</span>
+                <span>{user&&user.surname} {user&&user.name} {user&&user.patronymic}</span>
             </div>
         </div>
         <div className="text">
@@ -38,15 +43,8 @@ const ChallengeDemo=observer(({author,avatar, name, title, img, text, theme,date
         </div>
   
         <div className="more" onClick={()=>{
-            challenges.setChallenge({avatar, name, title, img, text,theme,date})
-            localStorage.setItem('avatar',avatar)
-            localStorage.setItem('name',name)
-            localStorage.setItem('title', title)
-            localStorage.setItem('img', img)
-            localStorage.setItem('text', text)
-            localStorage.setItem('theme', theme.join(','))
-            localStorage.setItem('date', date)
-            nav(config.posts.challenge)
+            challenges.setChallenge({id, author, avatar, name, header: title, headerImg: img, description: text, themes: theme, pub_date: date})
+            nav(config.posts.challenge2+'/'+id)
         }}>
             <span>Читать далее</span>
         </div>

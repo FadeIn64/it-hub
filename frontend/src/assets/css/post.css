@@ -43,8 +43,10 @@
 .post .post_cont .c .header {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .post .post_cont .c .header .avatar {
+  margin-top: 1rem;
   height: 4.4375rem;
   width: 4.4375rem;
   border-radius: 100%;

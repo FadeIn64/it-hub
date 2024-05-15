@@ -3,6 +3,10 @@ import '../assets/css/sidebar.css'
 import sstu from '../assets/imgs/sstu.png'
 import { useNavigate } from "react-router-dom";
 import { config } from "../config.ts";
+import challenges from "../utils/stores/challenges.ts";
+import profile from "../utils/stores/profile.ts";
+import { useEffect, useState } from "react";
+import menu from '../assets/imgs/menu.svg'
 const Sidebar =observer(()=>{
     const nav = useNavigate()
     return <div className="n">
@@ -41,8 +45,11 @@ const Sidebar =observer(()=>{
                         </span>
                     </li>
                     <li>
-                        <span>
-                            Git
+                        <span >
+                            <a href="http://178.154.225.104:8081/">
+                                Git
+                            </a>
+                            
                         </span>
                     </li>
                 </ul>
@@ -55,8 +62,12 @@ const Sidebar =observer(()=>{
                     </span>
                 </li>
                 <li onClick={()=>{
-                        document.cookie='auth=""'
+                        document.cookie='auth="22"; max-age=0;'
                         nav('/')
+                        challenges.setChallenges([])
+                        challenges.setChallenge(undefined)
+                        profile.setArticles([])
+                        
                     }}>
                     <span>
                         Выйти

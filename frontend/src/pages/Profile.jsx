@@ -16,21 +16,20 @@ import Footer from '../components/Footer.jsx'
 import { config } from '../config.ts'
 import { useNavigate } from 'react-router-dom'
 import profileUtil from '../utils/axios/profile.ts'
+import seacrhCookies from '../utils/functions/searchCookies.ts'
 
 const Profile =observer(()=>{
     const [state, setState] = useState(false)
     const nav =useNavigate()
+
     useEffect(()=>{
-       
-        if(document.cookie.length==0){
+        const data= seacrhCookies('auth')
+        if(data==0){
             nav(config.auth.auth)
         }else{
-            const cookee= document.cookie.split('=')[1]
-            const data = JSON.parse(cookee)
             const p =new profileUtil()
             const res = p.request(data)
             setState(res)
-        
         }
        
     },[])
@@ -43,7 +42,7 @@ const Profile =observer(()=>{
             <div className="middle">
                 <div className="fio">
                     {profile.getRole()=='teacher'?
-                        <span>{profile.getSername()!=undefined?profile.getSername():' '} {profile.getName()!=undefined?profile.getName()+' ':' '} {profile.getPar()!=undefined?profile.getPar():''} </span>
+                        <span>{profile.getSername()!=undefined?profile.getSername()+' ':' '} {profile.getName()!=undefined?profile.getName()+' ':' '} {profile.getPar()!=undefined?profile.getPar():''} </span>
                     :
                         <span>{profile.getName()!=undefined?profile.getName()+' ':' '} {profile.getSername()!=undefined?profile.getSername():' '}</span>
 

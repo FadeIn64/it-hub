@@ -4,10 +4,8 @@
   padding: 2.25rem;
   background: #1E1E1E;
   border-radius: 8px;
-  border: 4px solid #1400FF;
   box-sizing: border-box;
   width: calc(100% - 1rem);
-  margin-left: 1rem;
   justify-content: center;
 }
 .players h3 {

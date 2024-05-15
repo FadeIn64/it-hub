@@ -7,43 +7,30 @@ import tg from '../assets/imgs/tg.png'
 import email from '../assets/imgs/email.png'
 import '../assets/css/profile.css'
 import { useEffect, useState } from 'react'
-import plus from '../assets/imgs/plus.svg'
-import plus2 from '../assets/imgs/plus2.svg'
 import s from '../assets/imgs/search.svg'
 import DemoMeArticle from '../components/DemoMeArticle.jsx'
 import profilePerson from '../utils/stores/profilePerson.ts'
-import axios from 'axios'
 import Footer from '../components/Footer.jsx'
 import { Requests } from '../utils/axios/auth.ts'
 import { config } from '../config.ts'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import seacrhCookies from '../utils/functions/searchCookies.ts'
+import profileUtil from '../utils/axios/profile.ts'
 
 const ProfilePerson =observer(()=>{
     const [state, setState] = useState(false)
+    const param = useParams()
     const nav = useNavigate()
+
     useEffect(()=>{
-        if(document.cookie.length==0){
+        const data= seacrhCookies('auth')
+        if(data==0){
             nav(config.auth.auth)
         }else{
-            const o = new Requests()
-            const cookee= document.cookie.split('=')[1]
-            const data = JSON.parse(cookee)
-            const res = o.auth(data.login, data.password)
+            const p =new profileUtil()
+            const res = p.request2(param.id,data)
             setState(res)
         }
-    },[])
-    useEffect(()=>{
-        profilePerson.setAvatar(ava);
-        profilePerson.setName('Максим')
-        profilePerson.setSername('Марцинкевич')
-        profilePerson.setTextAboutMe(' Амбициозный студент СГТУ по направлению информационные технологии. Углубленно изучаю программирование, базы данных, сети и искусственный интеллект. Сильные стороны: • Глубокое понимание ИТ-принципов • Прочные навыки программирования • Отличные аналитические и коммуникативные навыки • Знакомство с искусственным интеллектом и машинным обучением')
-        profilePerson.setArticles([
-            {title: 'Привет! Меня зовут Илья, и я студент ИнПИТ',
-            img: 'https://avatars.dzeninfra.ru/get-zen-vh/6269254/2a00000181758c3b585bb3b81dccc29c4b6a/orig',
-            text: 'Привет! Меня зовут Илья, и я студент ИнПИТ. Я увлечен технологиями и информатикой. Мне интересно создавать программное обеспечение, веб-сайты, анализировать данные и заниматься кибербезопасностью. У меня есть навыки программирования на различных языках, таких как Java, Python, C++ и других. Я также изучаю современные технологии облачных вычислений, машинного обучения и искусственного интеллекта. В свободное время я часто участвую в хакатонах, конференциях и мастер-классах, чтобы расширить свои знания и навыки в области информационных технологий.'
-            }
-        ])
-        profilePerson.setSkills(['1C','Java','Js','C++'])
     },[])
    
     if(state)
@@ -54,8 +41,12 @@ const ProfilePerson =observer(()=>{
         <div className="container">
             <div className="middle">
                 <div className="fio">
-                    <span>{profilePerson.getName()!=undefined?profilePerson.getName()+' ':' '}</span>
-                    <span>{profilePerson.getSername()!=undefined?profilePerson.getSername():''}</span>
+                        {profilePerson.getRole()=='teacher'?
+                        <span>{profilePerson.getSername()!=undefined?profilePerson.getSername()+' ':' '} {profilePerson.getName()!=undefined?profilePerson.getName()+' ':' '} {profilePerson.getPar()!=undefined?profilePerson.getPar():''} </span>
+                    :
+                        <span>{profilePerson.getName()!=undefined?profilePerson.getName()+' ':' '} {profilePerson.getSername()!=undefined?profilePerson.getSername():' '}</span>
+
+                        }
                 </div>
                 <div className="aboutme">
                     <h3>О себе</h3>
@@ -69,7 +60,7 @@ const ProfilePerson =observer(()=>{
                 </div>
                 <div className="articles">
                     {profilePerson.getArticles().map(v=>{
-                        return <DemoMeArticle title={v.title} img={v.img} text={v.text.slice(0,300)+"..."}></DemoMeArticle>
+                        return <DemoMeArticle id={v.id} author={v.author} title={v.header} img={v.headerImg} text={v.description} date={v.pub_date} themes={v.themes}></DemoMeArticle>
                     })}
                 </div>
             </div>
@@ -89,24 +80,24 @@ const ProfilePerson =observer(()=>{
                     </div>
                 </div>
                 <div className="links">
-                    <div className="link">
+                    {profilePerson.getGitLink()!=undefined&&<div className="link">
                         <a href={profilePerson.getGitLink()!=undefined&&profilePerson.getGitLink()}>
                             <img src={git} alt="" />
                             <span>{profilePerson.getGitLink()!=undefined&&profilePerson.getGitLink()}</span>
                         </a>
-                    </div>
-                    <div className="link">
+                    </div>}
+                    {profilePerson.getTgLink()&&<div className="link">
                         <a href={profilePerson.getTgLink()!=undefined&&profilePerson.getTgLink()}>
                             <img src={tg} alt="" />
                             <span>{profilePerson.getTgLink()!=undefined&&profilePerson.getTgLink()}</span>
                         </a>
-                    </div>
-                    <div className="link">
+                    </div>}
+                    {profilePerson.getEmailLink()&&<div className="link">
                         <a href={profilePerson.getEmailLink()!=undefined&&profilePerson.getEmailLink()}>
                             <img src={email} alt="" />
                             <span>{profilePerson.getEmailLink()!=undefined&&profilePerson.getEmailLink()}</span>
                         </a>
-                    </div>
+                    </div>}
                 </div>
                 <div className="skills">
                     <div className="s_top">

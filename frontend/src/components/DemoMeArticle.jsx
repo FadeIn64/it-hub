@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import profile from "../utils/stores/profile.ts";
 import post from "../utils/stores/post.ts";
 import { config } from "../config.ts";
-const DemoMeArticle =observer(({title, img, text})=>{
+const DemoMeArticle =observer(({id,author, title, img, text,date,themes})=>{
     const nav = useNavigate()
     return <div className="article">
         <h2>{title}</h2>
@@ -17,13 +17,8 @@ const DemoMeArticle =observer(({title, img, text})=>{
             <p>{text.slice(0,300)}...</p>
         </div>
         <div className="more" onClick={()=>{
-              post.setPost({avatar: profile.getAvatar(), name: profile.getName()+' '+profile.getSername(), title, img, text})
-              localStorage.setItem('avatar',profile.getAvatar())
-              localStorage.setItem('name',profile.getName()+' '+profile.getSername())
-              localStorage.setItem('title', title)
-              localStorage.setItem('img', img)
-              localStorage.setItem('text', text)
-              nav(config.posts.post)
+               post.setPost({ author: author, header: title, headerImg: img, description:text, pub_date: date, themes})
+               nav(config.posts.post2+'/'+id)
         }}>
             <span>Читать далее</span>
         </div>

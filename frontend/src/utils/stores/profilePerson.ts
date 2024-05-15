@@ -10,7 +10,10 @@ class profilePersonStore{
 
     private _name: string;
     private _sername: string;
+    private _par: string;
     private _textAboutMe: string;
+
+    private _role: string;
 
     private _articles: any =[];
 
@@ -75,6 +78,14 @@ class profilePersonStore{
         this._sername=sername;
     }
 
+    getPar(){
+        return this._par;
+    }
+
+    setPar(par: string){
+        this._par=par;
+    }
+
     getTextAboutMe(){
         return this._textAboutMe;
     }
@@ -97,6 +108,14 @@ class profilePersonStore{
 
     setSkills(skills: string[]){
         this._skiils=skills;
+    }
+
+    setRole(role: string){
+        this._role=role;
+    }
+
+    getRole(){
+        return this._role;
     }
     
     

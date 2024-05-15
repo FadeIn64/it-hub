@@ -3,26 +3,19 @@ import Player from "./Player.jsx";
 import '../assets/css/players.css'
 import { useEffect } from "react";
 import challenges from "../utils/stores/challenges.ts";
+import { competitions } from "../utils/axios/competitions.ts";
+import { useParams } from "react-router-dom";
 const Players = observer(()=>{
+    const param = useParams()
     useEffect(()=>{
-        challenges.setPlayers([
-            {
-                avatar: 'https://cdn.ren.tv/cache/1200x630/media/img/6d/54/6d54c97705a4d0225a5935b35adc9a078d30442d.jpg',
-                name: 'Максим Марцинкевич Тесак',
-                comment: 'Здравствуйте мои маленькие любители экстремизма'
-            },
-            {
-                avatar: 'https://cdn.ren.tv/cache/1200x630/media/img/6d/54/6d54c97705a4d0225a5935b35adc9a078d30442d.jpg',
-                name: 'Максим Марцинкевич Тесак',
-                comment: 'Здравствуйте мои маленькие любители экстремизма'
-            }
-        ])
+        const o = new competitions()
+        o.getMembers(param.id)
     },[])
 return <div className="players">
     <h3>Участники</h3>
     <div className="ps">
-        {challenges.getPlayers().map(v=>{
-            return <Player avatar={v.avatar} name={v.name} comment={v.comment}></Player>
+        {challenges.getPlayers().length>0&&challenges.getPlayers().map(v=>{
+            return <Player member={v}></Player>
         })}
     </div>
 </div>

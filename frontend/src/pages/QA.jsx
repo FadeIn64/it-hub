@@ -5,35 +5,20 @@ import qa from "../utils/stores/qa.ts";
 import { useNavigate } from "react-router-dom";
 import { config } from "../config.ts";
 import { Requests } from "../utils/axios/auth.ts";
-import articles from "../utils/axios/articels.jsx";
+import articles from "../utils/axios/articels.ts";
 
 
 const QA = observer(({data})=>{
     const [user, setUser]= useState(null)
     const nav = useNavigate()
     useEffect(()=>{
-        if(document.cookie.length==0){
-            nav(config.auth.auth)
-        }else{
-            const cookee= document.cookie.split('=')[1]
-            const dat = JSON.parse(cookee)
-            const o = new Requests()
-            const r = new articles()
-            const res = o.auth(dat.login,dat.password)
-            if(res){
-                const user= new usersUtil()
-                user.getUser(data.author).then(v=>{
-                    setUser(v)
-                })
-            }
+        const user= new usersUtil()
+        user.getUser(data.author).then(v=>{
+            setUser(v)
+        })
 
-            setState(res)
-        }
-    
-     
     },[])
     const [state, setState] = useState(false)
-    if(state)
     return <div className="qa" onClick={()=>{
         qa.setQA(data)
         nav(config.qa.question2+'/'+data.id)
@@ -56,7 +41,7 @@ const QA = observer(({data})=>{
         <div className="text">
             <p>{data.description.slice(0,100)}...</p>
         </div>
-        <div className="author">
+        <div className="author" onClick={()=>{nav(config.profile.way+'/'+user.login)}}>
             <div className="img">
                 <img src={user&&user.avatar} alt="" />
             </div>
@@ -66,7 +51,6 @@ const QA = observer(({data})=>{
             </div>
         </div>
     </div>
-    return <></>
 })
 
 export default QA
