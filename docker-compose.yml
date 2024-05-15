@@ -10,8 +10,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-    ports:
-      - "5432:5432"
     networks:
       - sso_net
     volumes:
@@ -42,8 +40,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-    ports:
-      - "5433:5432"
     networks:
       - users_net
     volumes:
@@ -76,8 +72,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-    ports:
-      - "5434:5432"
     networks:
       - competitions_net
     volumes:
@@ -108,8 +102,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-    ports:
-      - "5435:5432"
     networks:
       - articles_net
     volumes:
@@ -140,8 +132,6 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-    ports:
-      - "5436:5432"
     networks:
       - qas_net
     volumes:
@@ -187,7 +177,6 @@ services:
       dockerfile: Dockerfile
     networks:
       - apis_net
-
 
 volumes:
   sso-data:
