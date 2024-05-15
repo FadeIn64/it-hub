@@ -10,4 +10,14 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PretenderRepo extends CrudRepository<Pretender, Integer> {
+
+    @Modifying
+    @Query("""
+       insert into pretender
+       values (:competition, :login, false)
+       on conflict (competition, login)
+       do nothing
+       returning true as val;
+    """)
+    void insert(Integer competition, String login);
 }

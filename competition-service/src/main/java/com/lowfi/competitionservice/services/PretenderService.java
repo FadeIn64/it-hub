@@ -14,6 +14,11 @@ public class PretenderService {
         var new_ = new Pretender();
         new_.setLogin(login_user);
         new_.setCompetition(id_competition);
-        return pretenderRepo.save(new_);
+        try {
+            pretenderRepo.insert(new_.getCompetition(), new_.getLogin());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return new_;
     }
 }

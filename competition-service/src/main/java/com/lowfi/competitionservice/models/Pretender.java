@@ -10,7 +10,6 @@ import org.springframework.data.relational.core.mapping.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pretender {
-    @Id
     Integer competition;
     String login;
     Boolean in_team;
