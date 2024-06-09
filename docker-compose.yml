@@ -179,6 +179,7 @@ services:
       - article-server
       - qa-server
       - frontend
+    #Копируем папку с конфигурацией в контейнер
     volumes:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
