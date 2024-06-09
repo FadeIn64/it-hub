@@ -1,5 +1,6 @@
 version: '3.8'
 services:
+  #Создаем Бд для SSO
   sso-db:
     image: postgres:15-alpine3.19
     env_file:
@@ -19,14 +20,17 @@ services:
       - sso-data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  #Создаем SSO сервер
   sso-server:
     image: sso-server:0.0.1
     build:
+      #Билдим из докер файла в папке simple-sso
       context: ./simple-sso
       dockerfile: Dockerfile
     depends_on:
       - sso-db
     networks:
+      #Подключаем к сетям апишек и к базе данных, что бы не светить контейнерами наружу
       - apis_net
       - sso_net
     env_file:
@@ -178,17 +182,17 @@ services:
     volumes:
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
-
-
   frontend:
     image: front:0.0.1
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     networks:
       - apis_net
 
-
+#Создаем хранилища(тома), что бы после остановки контейнеров с бд, данные не терялись
 volumes:
   sso-data:
   users-data:
@@ -196,6 +200,7 @@ volumes:
   articles_data:
   qas_data:
 
+#Создаем сети внутри докера, для изолирования контенеров друг от друга.
 networks:
   apis_net:
     driver: bridge
